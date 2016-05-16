@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>学习 React！</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/javascript" src="build/react.js"></script>
+    <script type="text/javascript" src="build/JSXTransformer.js"></script>
+    <script type="text/jsx">
+        var AppBox = React.createClass({
+            handleClick: function() {
+                alert('雅蠛蝶');
+            },
+            render: function() {
+                return (
+                    <div>
+                        <h1>点下面</h1>
+                        <button onClick={this.handleClick}>点我，快点我</button>
+                    </div>
+                );
+            }
+        });
+
+        React.render(
+            <AppBox />,
+            document.getElementById('app')
+        );
+    </script>
+</body>
+</html>
