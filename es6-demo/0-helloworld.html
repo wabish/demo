@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>es6 - helloworld</title>
+        <script type="text/javascript" src="bin/traceur.js"></script>
+        <script type="text/javascript" src="bin/BrowserSystem.js"></script>
+        <script type="text/javascript" src="bin/bootstrap.js"></script>
+    </head>
+    <body>
+        <script type="module">
+          class Calc {
+            constructor(){
+              console.log('Calc constructor');
+            }
+            add(a, b){
+              return a + b;
+            }
+          }
+
+          var c = new Calc();
+          console.log(c.add(4,5));
+        </script>
+    </body>
+</html>
