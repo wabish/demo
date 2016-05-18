@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ES5 bind 函数</title>
+</head>
+<body>
+    <button id="login">登录</button>
+    <button id="register">注册</button>
+    <script type="text/javascript">
+        var loginBtn = document.getElementById('login'),
+            regBtn = document.getElementById('register');
+
+        // 未使用 bind 方法
+        // loginBtn.onclick = function() {
+        //     alert(this.innerHTML);
+        // };
+
+        // 使用了 bind 后，this 会变为 regBtn
+        login.onclick = function() {
+            alert(this.innerHTML);
+        }.bind(regBtn);
+
+        // bind方法尤其在对象字面量编程风格下尤为受用
+        var regObj = {
+            color: '#ff0000',
+            element: document.getElementById('register'),
+            events: function() {
+                this.element.onclick = function() {
+                    this.element.style.color = this.color;
+                }.bind(this);
+                return this;
+            },
+            init: function() {
+                this.events();
+            }
+        };
+        regObj.init();
+
+    </script>
+</body>
+</html>
