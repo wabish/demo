@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>React - 组件的嵌套</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="build/react.js"></script>
+    <script type="text/javascript" src="build/JSXTransformer.js"></script>
+    <script type="text/jsx">
+        /**
+         * 注意点：
+         * 1、一个组件最多只能返回一个父标签，如果有多个需要使用一个父标签包含起来；
+         * 2、循环子组件需给每个子组件赋值一个key
+         */
+
+        var MessageBox = React.createClass({
+            render: function() {
+                var subMessageArr = [];
+                for (var i = 0; i < 10; i++) {
+                    subMessageArr.push(
+                        <SubMessageBox key={'SubMsg' + i} />
+                    );
+                }
+
+                return (
+                    <div>
+                        <h1>你好，世界！</h1>
+                        {subMessageArr}
+                    </div>
+                );
+            }
+        });
+
+        var SubMessageBox = React.createClass({
+            render: function() {
+                return (
+                    <div>
+                        <h3>假如生活欺骗了你，不要悲伤，不要心急</h3>
+                        <Footer />
+                    </div>
+                );
+            }
+        });
+
+        var Footer = React.createClass({
+            render: function() {
+                return (
+                    <small>因为你就容易被生活欺骗，哈哈哈</small>
+                );
+            }
+        });
+
+        React.render(
+            <MessageBox />,
+            document.getElementById('app'),
+            function() {
+                console.log('渲染完成');
+            }
+        );
+    </script>
+</body>
+</html>
