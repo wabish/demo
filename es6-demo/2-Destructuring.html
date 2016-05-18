@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>解构 - Destructuring</title>
+        <script type="text/javascript" src="bin/traceur.js"></script>
+        <script type="text/javascript" src="bin/BrowserSystem.js"></script>
+        <script type="text/javascript" src="bin/bootstrap.js"></script>
+    </head>
+    <body>
+        <script type="module">
+
+            // 数组解构
+            {
+                var [a, b, c] = [1, 2, 3];
+                console.log('a = ' + a + ', b = ' + b + ', c = ' + c);
+                // a = 1, b = 2, c = 3
+            }
+
+            {
+                let [foo, [[bar], baz]] = [1, [[2], 3]];
+                console.log('foo = ' + foo + ', bar = ' + bar + ', baz = ' + baz);
+                // foo = 1, bar = 2, baz = 3
+            }
+
+            {
+                let [ , , third] = ['foo', 'bar', 'baz'];
+                console.log(third);
+                // baz
+            }
+
+            {
+                let [x, , y] = [1, 2, 3];
+                console.log('x = ' + x + ', y = ' + y);
+                // x = 1, y = 3
+            }
+
+            {
+                let [head, ...tail] = [1, 2, 3, 4];
+                console.log('head = ' + head + ', tail = ' + tail);
+                // head = 1, tail = 2,3,4
+
+                console.log(tail[0]);
+                // 2
+            }
+
+            {
+                // 默认值
+                var [foo = true] = [];
+                console.log(foo);
+            }
+
+            // 对象解构
+            {
+                var {foo, bar} = {foo: 'aaa', bar: 'bbb'};
+                console.log('foo = ' + foo + ', bar = ' + bar);
+            }
+
+            // 字符串的解构
+            {
+                let [a, b, c, d, e] = 'hello';
+                console.log('a = ' + a + ', b = ' + b + ', c = ' + c);
+            }
+
+        </script>
+    </body>
+</html>
