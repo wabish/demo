@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>React - 组件的状态</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="build/react.js"></script>
+    <script type="text/javascript" src="build/JSXTransformer.js"></script>
+    <script type="text/jsx">
+        /**
+         * 注意点：
+         * 1、不要直接修改组件的 state 属性，它并不会立刻刷新。请使用 setState 进行更新数据
+         */
+        var AppBox = React.createClass({
+            getInitialState: function() {
+                return {
+                    clickCount: 0
+                };
+            },
+            handleClick: function() {
+                this.setState({
+                    clickCount: this.state.clickCount + 1
+                });
+            },
+            render: function() {
+                return (
+                    <div>
+                        <h1>点击下面的按钮</h1>
+                        <button onClick={this.handleClick}>点击</button>
+                        <p>你一共点击了 {this.state.clickCount} 次</p>
+                    </div>
+                );
+            }
+        });
+
+        React.render(
+            <AppBox />,
+            document.getElementById('app')
+        );
+    </script>
+</body>
+</html>
