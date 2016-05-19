@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>字符串的扩展</title>
+        <script type="text/javascript" src="bin/traceur.js"></script>
+        <script type="text/javascript" src="bin/BrowserSystem.js"></script>
+        <script type="text/javascript" src="bin/bootstrap.js"></script>
+    </head>
+    <body>
+        <script type="module">
+
+            // 遍历字符串
+            {
+                for (let codePoint of 'cob') {
+                    console.log(codePoint);
+                }
+            }
+
+            // includes(), startsWith(), endsWith()
+            {
+                let s = 'Hello World!';
+
+                console.log(s.includes('o'));          // true
+                console.log(s.startsWith('Hello'));    // true
+                console.log(s.endsWith('!'));          // true
+
+                console.log(s.includes('Hello', 6));   // false 
+                console.log(s.startsWith('World', 6)); // true
+                console.log(s.endsWith('Hello', 5));   // true
+            }
+
+            // repeat
+            {
+                console.log('x'.repeat(3));     // xxx
+                console.log('na'.repeat(2.9));  // nana
+            }
+
+            // 模板字符串
+            {
+                var name = 'cobish',
+                    age = 23;
+
+                console.log(`My name is ${name}, my age is ${age}`);
+                // My name is cobish, my age is 23
+            }
+
+        </script>
+    </body>
+</html>
