@@ -1,4 +1,6 @@
-## react-0.13.0
+## react-demo (0.13.0)
+
+> use React v0.13.0
 
 ``` bash
 0-index.html                  - 初探 React
