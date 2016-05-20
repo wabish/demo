@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>React - 组件的参数 props</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="build/react.js"></script>
+    <script type="text/javascript" src="build/JSXTransformer.js"></script>
+    <script type="text/jsx">
+        var MessageBox = React.createClass({
+            getInitialState: function() {
+                return {
+                    titleMessage: '画',
+                    subMessage: [
+                        '远看山有色，',
+                        '近听水无声。',
+                        '春去花还在，',
+                        '人来鸟不惊。'
+                    ]
+                };
+            },
+            render: function() {
+                return (
+                    <div>
+                        <h1>{this.state.titleMessage}</h1>
+                        <SubMessageBox messages={this.state.subMessage} />
+                    </div>
+                );
+            }
+        });
+
+        var SubMessageBox = React.createClass({
+            getDefaultProps: function() {
+                return {
+                    messages: ['默认的子消息']
+                };
+            },
+            render: function() {
+                var msgs = [];
+                this.props.messages.forEach(function(msg, index) {
+                    msgs.push(<p key={'msg' + index}>{msg}</p>);
+                });
+                return (
+                    <div>{msgs}</div>
+                );
+            }
+        });
+
+        var messageBox = React.render(
+            <MessageBox/>,
+            document.getElementById('app')
+        );
+    </script>
+</body>
+</html>
