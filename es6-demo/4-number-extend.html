@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>数值的扩展</title>
+        <script type="text/javascript" src="bin/traceur.js"></script>
+        <script type="text/javascript" src="bin/BrowserSystem.js"></script>
+        <script type="text/javascript" src="bin/bootstrap.js"></script>
+    </head>
+    <body>
+        <script type="module">
+
+            {
+                console.log(Number.parseInt('12.34'));
+                // 12
+
+                console.log(Number.parseFloat('123.45#'));
+                // 123.45
+            }
+
+            {
+                console.log(Number.isInteger(25));
+                // true
+
+                console.log(Number.isInteger(25.1));
+                // false
+            }
+
+            {
+                console.log(Math.trunc(4.1));
+                // 4
+
+                console.log(Math.trunc(-4.1));
+                // -4
+            }
+
+            {
+                console.log(Math.sign(-5));
+                // -1
+
+                console.log(Math.sign(5));
+                // 1
+            }
+
+        </script>
+    </body>
+</html>
