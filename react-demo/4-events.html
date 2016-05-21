@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>React - 事件</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="build/react.js"></script>
+    <script type="text/javascript" src="build/JSXTransformer.js"></script>
+    <script type="text/jsx">
+        var FormApp = React.createClass({
+            getInitialState: function() {
+                return {
+                    inputValue: 'I am a good input'
+                }
+            },
+            handleChange: function(e) {
+                this.setState({
+                    inputValue: e.target.value
+                });
+            },
+            handleSubmit: function(e) {
+                e.preventDefault();
+                console.log('submitting ...');
+            },
+            render: function() {
+                return (
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
+                        <input type="text" defaultValue={this.state.inputValue} />
+                        <button>提交</button>
+                    </form>
+                );
+            }
+        });
+
+        React.render(
+            <FormApp />,
+            document.getElementById('app')
+        );
+    </script>
+</body>
+</html>
