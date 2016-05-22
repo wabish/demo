@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>数组的扩展</title>
+        <script type="text/javascript" src="bin/traceur.js"></script>
+        <script type="text/javascript" src="bin/BrowserSystem.js"></script>
+        <script type="text/javascript" src="bin/bootstrap.js"></script>
+    </head>
+    <body>
+        <script type="module">
+
+            {
+                console.log(Array.of(3, 11, 8));
+                // [3, 11, 8]
+
+                console.log(Array.of(3));
+                // [3]
+            }
+
+            {
+                console.log([1, 2, 3, 4, 5].copyWithin(0, 3));
+                // [4, 5, 3, 4, 5]
+            }
+
+            {
+                var a = [1, 5, 10, 15].find(function(value, index, arr) {
+                    return value > 9;
+                });
+                console.log(a);
+                // 10
+
+                var b = [1, 5, 10, 15].find(function(value, index, arr) {
+                    return value > 20;
+                })
+                console.log(b);
+                // undefined
+
+                var c = [1, 5, 10, 15].findIndex(function(value, index, arr) {
+                    return value > 20;
+                });
+                console.log(c);
+                // -1
+            }
+
+            {
+                console.log(['a', 'b', 'c'].fill(7));
+                // [7, 7, 7]
+            }
+
+            {
+                // keys() 对键名进行遍历
+                for (let index of ['a', 'b'].keys()) {
+                    console.log(index);
+                }
+
+                // values() 对键值进行遍历
+                for (let elem of ['a', 'b'].values()) {
+                    console.log(elem);
+                }
+
+                // entries 对键值对进行遍历
+                for (let [index, elem] of ['a', 'b'].entries()) {
+                    console.log(index, elem);
+                }
+            }
+
+            {
+                console.log([1, 2, 3].includes(2));
+                // true
+
+                console.log([1, 2, 3].includes(2, 2));
+                // false
+            }
+
+        </script>
+    </body>
+</html>
