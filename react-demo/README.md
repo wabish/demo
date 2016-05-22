@@ -10,9 +10,10 @@
 - 更新 ``state`` 需使用 ``setState`` 方法。
 
 ``` bash
-0-index.html                  - 初探 React
-1-nested-components.html      - 组件的嵌套
-2-components-states.html      - 组件的状态
-3-props.html                  - 组件的参数
-4-events.html                 - 事件
+└─ react-demo/
+    ├─ 0-index.html                  # 初探 React
+    ├─ 1-nested-components.html      # 组件的嵌套
+    ├─ 2-components-states.html      # 组件的状态
+    ├─ 3-props.html                  # 组件的参数
+    └─ 4-events.html                 # 事件
 ```
