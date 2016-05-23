@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>数组的扩展</title>
+        <script type="text/javascript" src="bin/traceur.js"></script>
+        <script type="text/javascript" src="bin/BrowserSystem.js"></script>
+        <script type="text/javascript" src="bin/bootstrap.js"></script>
+    </head>
+    <body>
+        <script type="module">
+
+            {
+                function log(x, y = 'World') {
+                    console.log(x, y);
+                }
+
+                log('Hello');           // Hello World
+                log('Hello', 'China');  // Hello China
+                log('Hello', '');       // Hello
+            }
+
+            {
+                function foo({x, y = 5}) {
+                    console.log(x, y);
+                }
+
+                foo({});           // undefined 5
+                foo({x: 1});       // 1 5
+                foo({x: 1, y: 2}); // 1 2
+                // foo();          // Error
+            }
+
+            {
+                var a = (function(a) {}).length;
+                var b = (function(a = 5) {}).length;
+                var c = (function(a, b, c = 5) {}).length;
+                var d = (function(a, b = 5, c) {}).length;
+
+                console.log(a);  // 1
+                console.log(b);  // 0
+                console.log(c);  // 2
+                console.log(d);  // 1
+            }
+
+        </script>
+    </body>
+</html>
