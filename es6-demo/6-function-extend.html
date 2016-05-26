@@ -56,6 +56,43 @@
 
                 console.log(add(2, 5, 3));  // 10
             }
+
+            {
+                var f = (num1, num2) => {
+                    num1 += 1;
+                    return num1 + num2;
+                };
+
+                console.log(f(1, 2)); // 4
+            }
+
+            {
+                // 箭头函数的好处
+                var foo = {
+                    s1: 10,
+                    func1: function() {
+                        setTimeout(function() {
+                            console.log(this.s1);
+                        }, 100);
+                    },
+                    func2: function() {
+                        var self = this;
+                        setTimeout(function() {
+                            console.log(self.s1);
+                        }, 100);
+                    },
+                    func3: function() {
+                        setTimeout(() => {
+                            console.log(this.s1);
+                        }, 100);
+                    }
+                };
+
+                foo.func1();  // undefined
+                foo.func2();  // 10
+                foo.func3();  // 10
+            }
+
         </script>
     </body>
 </html>
