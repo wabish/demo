@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>对象的扩展</title>
+        <script type="text/javascript" src="bin/traceur.js"></script>
+        <script type="text/javascript" src="bin/BrowserSystem.js"></script>
+        <script type="text/javascript" src="bin/bootstrap.js"></script>
+    </head>
+    <body>
+        <script type="module">
+
+            // 属性的简洁表示法
+            {
+                let foo = 'bar';
+                let o = {
+                    foo,
+                    method() {
+                        return 'hello method';
+                    }
+                }
+
+                console.log(o.foo);      // bar
+                console.log(o.method()); // hello method
+            }
+
+            {
+                function getPoint() {
+                    let x = 1;
+                    let y = 10;
+                    return {x, y};
+                }
+
+                console.log(getPoint()); // {x: 1, y: 10}
+            }
+
+            // 属性名表达式
+            {
+                let lastWord = 'last word';
+                let a = {
+                    'first word': 'hello',
+                    [lastWord]: 'world'
+                }
+
+                console.log(a['first word']); // hello
+                console.log(a[lastWord]);     // world
+                console.log(a['last word']);  // world
+            }
+
+            {
+                let obj = {
+                    ['h' + 'ello']() {
+                        return 'hi';
+                    }
+                };
+
+                console.log(obj.hello()); // hi
+            }
+
+            // Object.is()
+            {
+                // ES5
+                console.log(+0 === -0);   // true
+                console.log(NaN === NaN); // false
+
+                console.log(Object.is(+0, -0));   // false
+                console.log(Object.is(NaN, NaN)); // true
+            }
+
+        </script>
+    </body>
+</html>

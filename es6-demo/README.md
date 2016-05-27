@@ -10,5 +10,6 @@
     ├─ 3-string-extend.html      # 字符串的扩展
     ├─ 4-number-extend.html      # 数值的扩展
     ├─ 5-array-extend.html       # 数组的扩展
-    └─ 6-function-extend.html    # 函数的扩展
+    ├─ 6-function-extend.html    # 函数的扩展
+    └─ 7-object-extend.html      # 对象的扩展
 ```
