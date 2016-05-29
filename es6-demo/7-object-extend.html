@@ -75,11 +75,11 @@
                 var source2 = {c: 3};
 
                 Object.assign(target, source1, source2);
-                console.log(target);
+                console.log(target);  // {a: 1, b: 2, c: 3}
 
                 // 浅拷贝
                 source1.b = 4;
-                console.log(target);
+                console.log(target);  // {a: 1, b: 2, c: 3}
             }
 
         </script>
