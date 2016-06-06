@@ -4,6 +4,7 @@
 
 ``` bash
 └─ js-demo/
-    ├─ 0-bind.html       # ES5的bind函数的使用
-    └─ 1-join.html       # js的join函数的使用   
+    ├─ 0-bind.html              # ES5的bind函数的使用
+    ├─ 1-join.html              # js的join函数的使用   
+    └─ 2-array-function.html    # 函数方法
 ```
