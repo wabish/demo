@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>数组的方法</title>
+</head>
+<body>
+    <script type="text/javascript">
+        
+        // forEach()方法
+        (function() {
+            var a = [1, 2, 3, 4];
+            var sum = 0;
+            a.forEach(function(value) {
+                sum += value;
+            });
+
+            console.log(sum); // 10
+
+            a.forEach(function(value, index, arr) {
+                arr[index] = value * value;
+            });
+            console.log(a); // [1, 4, 9, 16]
+        })();
+
+        // map()方法
+        (function() {
+            var a = [1, 2, 3, 4];
+            var b = a.map(function(value) {
+                return value * value;
+            });
+
+            console.log(a); // [1, 2, 3, 4]
+            console.log(b); // [1, 4, 9, 16]
+        })();
+    </script>
+</body>
+</html>
