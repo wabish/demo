@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>对象</title>
+</head>
+<body>
+    <script type="text/javascript">
+        
+        // 检测属性
+        (function() {
+            var o = {
+                x: 1
+            };
+            console.log('x' in o);          // true
+            console.log('y' in o);          // false
+            console.log('toString' in o);   // true
+
+            console.log(o.hasOwnProperty('x'));        // true
+            console.log(o.hasOwnProperty('y'));        // false
+            console.log(o.hasOwnProperty('toString')); // false
+
+            console.log(o.propertyIsEnumerable('x'));        // true
+            console.log(o.propertyIsEnumerable('y'));        // false
+            console.log(o.propertyIsEnumerable('toString')); // false
+        })();
+
+    </script>
+</body>
+</html>
