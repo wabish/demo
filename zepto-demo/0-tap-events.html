@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>tap events</title>
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            margin: 50px auto;
+            width: 90%;
+            height: 500px;
+            line-height: 500px;
+            text-align: center;
+            font-size: 50px;
+            background: #ffcccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">tap 区域</div>
+    <script type="text/javascript" src="./zepto.js"></script>
+    <script type="text/javascript">
+        // $('#box').on('tap', function() {
+        //     console.log('tag 成功');
+        // });
+
+        $('#box').on('singleTap', function() {
+            console.log('单击元素成功')
+        });
+
+        $('#box').on('doubleTap', function() {
+            console.log('双击元素成功');
+        });
+
+        $('#box').on('longTap', function() {
+            console.log('长按元素成功');
+        });
+
+        $('#box').on('swipeLeft', function() {
+            console.log('向左手势');
+        });
+
+        $('#box').on('swipeRight', function() {
+            console.log('向右手势');
+        });
+
+        $('#box').on('swipeUp', function() {
+            console.log('向上手势');
+        });
+
+        $('#box').on('swipeDown', function() {
+            console.log('向下手势');
+        });
+    </script>
+</body>
+</html>
