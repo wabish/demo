@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>函数this的指向</title>
+</head>
+<body>
+    <script type="text/javascript">
+        
+        // 非严格模式下函数的this指向
+        (function() {
+            function f() {
+                console.log(this); // 全局对象，Window
+            }
+            f();
+        })();
+
+        (function() {
+            'use strict';
+            function f() {
+                console.log(this); // undefined
+            }
+            f();
+        })();
+
+        // this的指向
+        (function() {
+            var o = {
+                m: function() {
+                    var self = this;
+                    console.log(this === o); // true
+                    f();
+
+                    function f() {
+                        console.log(this === o); // false
+                        console.log(self === o); // true
+                    }
+                }
+            };
+
+            o.m();
+        })();
+
+    </script>
+</body>
+</html>

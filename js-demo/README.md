@@ -7,5 +7,7 @@
     ├─ 0-bind.html                  # ES5的bind函数的使用
     ├─ 1-join.html                  # js的join函数的使用   
     ├─ 2-array-function.html        # 数组方法
-    └─ 3-es5-array-function.html    # es5数组方法
+    ├─ 3-es5-array-function.html    # es5数组方法
+    ├─ 4-object-property.html       # 对象检测属性
+    └─ 5-functionthis-this.html     # 函数this的指向
 ```
