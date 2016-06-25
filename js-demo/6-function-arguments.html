@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>arguments</title>
+</head>
+<body>
+    <script type="text/javascript">
+        
+        // arguments实参对象
+        (function() {
+            function f(x) {
+                console.log(arguments);        // ["Tom", "Jerry", "Pat"]
+                console.log(arguments.length); // 3
+                console.log(arguments[1]);     // Jerry
+            }
+            f('Tom', 'Jerry', 'Pat');
+        })();
+
+        // arguments改变形参的值
+        (function() {
+            function f(x) {
+                console.log(x);       // 5
+                arguments[0] = 'Tom';
+                console.log(x);       // Tom
+            }
+            f(5);
+        })();
+
+    </script>
+</body>
+</html>
