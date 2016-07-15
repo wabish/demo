@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>arguments</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        function testSwitch(index) {
+            switch (index) {
+                case 1:
+                    console.log('one');
+                    break;
+                case 2:
+                    console.log('two');
+                    break;
+                default:
+                    console.log('default');
+            }
+        }
+
+        testSwitch(1);    // one
+        testSwitch('1');  // default
+
+    </script>
+</body>
+</html>

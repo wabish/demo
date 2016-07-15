@@ -9,5 +9,7 @@
     ├─ 2-array-function.html        # 数组方法
     ├─ 3-es5-array-function.html    # es5数组方法
     ├─ 4-object-property.html       # 对象检测属性
-    └─ 5-functionthis-this.html     # 函数this的指向
+    ├─ 5-function-this.html         # 函数this的指向
+    ├─ 6-function-arguments.html    # 函数的arguments
+    └─ 7-switch.html                # switch语法
 ```
