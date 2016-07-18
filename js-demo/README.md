@@ -11,5 +11,6 @@
     ├─ 4-object-property.html       # 对象检测属性
     ├─ 5-function-this.html         # 函数this的指向
     ├─ 6-function-arguments.html    # 函数的arguments
-    └─ 7-switch.html                # switch语法
+    ├─ 7-switch.html                # switch语法
+    └─ 8-defer.html                 # defer
 ```
