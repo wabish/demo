@@ -31,6 +31,7 @@
                         <div className="box">
                             <textarea className="txt" onChange={this.handleChange}></textarea>
                             <button className="btn" disabled={this.state.text.length === 0} onClick={this.handleClick}>发布</button>
+                            <span className="num">{140 - this.state.text.length}</span>
                         </div>
                     );
                 }
