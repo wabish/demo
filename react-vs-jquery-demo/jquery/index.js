@@ -14,7 +14,7 @@ $(document).ready(function(){
 
     // 按钮点击事件
     $('.btn').on('click', function() {
-        console.log('btn click');
+        alert($('.txt').val());
     });
 
 });

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>react demo</title>
+        <link rel="stylesheet" href="index.css" />
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <script type="text/javascript" src="react-0.14.0.js"></script>
+        <script type="text/javascript" src="react-dom-0.14.0.js"></script>
+        <script type="text/javascript" src="browser.min.js"></script>
+        <script type="text/babel">
+            var AppBox = React.createClass({
+                getInitialState: function() {
+                    return {
+                        text: ''
+                    };
+                },
+                handleChange: function(event) {
+                    this.setState({
+                        text: event.target.value
+                    });
+                },
+                handleClick: function() {
+                    alert(this.state.text);
+                },
+                render: function() {
+                    return (
+                        <div className="box">
+                            <textarea className="txt" onChange={this.handleChange}></textarea>
+                            <button className="btn" disabled={this.state.text.length === 0} onClick={this.handleClick}>发布</button>
+                        </div>
+                    );
+                }
+            });
+
+            ReactDOM.render(
+                <AppBox />,
+                document.getElementById('app')
+            );
+        </script>
+    </body>
+</html>
