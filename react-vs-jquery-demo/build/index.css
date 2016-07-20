@@ -29,3 +29,13 @@ html, body {
     border: 0;
     border-radius: 2px;
 }
+
+.num {
+    display: block;
+    float: right;
+    margin: 20px 15px 0 0;
+    height: 30px;
+    color: #666;
+    font-size: 14px;
+    line-height: 30px;
+}

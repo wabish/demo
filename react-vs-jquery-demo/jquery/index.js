@@ -10,6 +10,8 @@ $(document).ready(function(){
         } else {
             $('.btn').prop('disabled', true);
         }
+
+        $('.num').text(140 - $(this).val().length);
     });
 
     // 按钮点击事件
