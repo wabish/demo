@@ -26,12 +26,24 @@
                 handleClick: function() {
                     alert(this.state.text);
                 },
+                setBtnStatus: function() {
+                    if (this.state.text.length > 0 && this.state.text.length <= 140) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                },
+                showNum: function() {
+                    var num = 140 - this.state.text.length;
+                    num = (num > 0) ? num : 0;
+                    return num;
+                },
                 render: function() {
                     return (
                         <div className="box">
                             <textarea className="txt" onChange={this.handleChange}></textarea>
-                            <button className="btn" disabled={this.state.text.length === 0} onClick={this.handleClick}>发布</button>
-                            <span className="num">{140 - this.state.text.length}</span>
+                            <button className="btn" disabled={this.setBtnStatus()} onClick={this.handleClick}>发布</button>
+                            <span className="num">{this.showNum()}</span>
                         </div>
                     );
                 }
