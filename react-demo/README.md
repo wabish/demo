@@ -15,5 +15,6 @@
     ├─ 1-nested-components.html      # 组件的嵌套
     ├─ 2-components-states.html      # 组件的状态
     ├─ 3-props.html                  # 组件的参数
-    └─ 4-events.html                 # 事件
+    ├─ 4-events.html                 # 事件
+    └─ 5-refs.html                   # Refs
 ```

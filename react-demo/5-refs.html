@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>React - Refs</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="build/react.js"></script>
+    <script type="text/javascript" src="build/JSXTransformer.js"></script>
+    <script type="text/jsx">
+        var FormApp = React.createClass({
+            getInitialState: function() {
+                return {
+                    inputValue: 'I am a good input'
+                }
+            },
+            handleChange: function(e) {
+                this.setState({
+                    inputValue: e.target.value
+                });
+            },
+            handleSubmit: function(e) {
+                e.preventDefault();
+                console.log('submitting ...');
+
+                // 使用 refs 获取到 input 的值
+                console.log(this.refs['myInput'].getDOMNode().value);
+            },
+            render: function() {
+                return (
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" ref="myInput" defaultValue={this.state.inputValue} />
+                        <button>提交</button>
+                    </form>
+                );
+            }
+        });
+
+        React.render(
+            <FormApp />,
+            document.getElementById('app')
+        );
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-## react-demo (0.13.0)
+## webpack (1.11.0)
 
 > **学习链接：**[《阮一峰 - webpack-demos》](https://github.com/ruanyf/webpack-demos)
 
