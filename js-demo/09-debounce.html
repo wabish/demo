@@ -10,7 +10,7 @@
         /**
          * 函数防抖
          * @param  {Function} 调用的函数
-         * @param  {Int}      时间
+         * @param  {Int}      时间，单位毫秒
          * @return {Function} 返回客户调用函数
          */
         var debounce = function(action, time) {
@@ -23,7 +23,7 @@
                 timer = setTimeout(function() {
                     action.apply(context, args);
                 }, time);
-            }
+            };
         };
 
         function doResize() {

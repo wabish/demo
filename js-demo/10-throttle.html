@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>函数节流</title>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+    <input id="txt">
+    <script type="text/javascript">
+        // $('#txt').on('keyup', function() {
+        //     console.log($(this).val());
+        // });
+
+        /**
+         * 函数节流
+         * @param  {Function} 调用的函数
+         * @param  {Int}      时间，单位毫秒
+         * @return {Function} 返回客户调用函数
+         */
+        var throttle = function(action, delay) {
+            var last = 0;
+            return function() {
+                var curr = +new Date();
+                if (curr - last > delay) {
+                    action.apply(this, arguments);
+                    last = curr;
+                }
+            };
+        }
+
+        function doInput() {
+            console.log($(this).val());
+        }
+
+        var action = throttle(doInput, 1000);
+        $('#txt').on('keyup', action);
+    </script>
+</body>
+</html>
