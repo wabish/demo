@@ -42,6 +42,22 @@
             o.m();
         })();
 
+        // apply
+        (function() {
+            var cat = {
+                name: 'Tom',
+                say: function() {
+                    console.log('My name is ' + this.name);
+                }
+            };
+
+            var mouse = {
+                name: 'Jerry'
+            };
+
+            cat.say.apply(mouse); // My name is Jerry
+        })();
+
     </script>
 </body>
 </html>
