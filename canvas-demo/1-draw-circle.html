@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style type="text/css">
+  #canvas {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #aaa;
+  }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="1024" height="768"></canvas>
+
+  <script type="text/javascript">
+    window.onload = function() {
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+      var i;
+
+      context.lineWidth = 5;
+      context.strokeStyle = '#005588';
+      context.fillStyle = '#005588';
+
+      // 首尾相连
+      for (i = 0; i < 10; i++) {
+        context.beginPath();
+        context.arc(50 + i * 100, 60, 40, 0, 2 * Math.PI * (i + 1) / 10);
+        context.closePath();
+
+        context.stroke();
+      }
+
+      // 首尾不相连
+      for (i = 0; i < 10; i++) {
+        context.beginPath();
+        context.arc(50 + i * 100, 180, 40, 0, 2 * Math.PI * (i + 1) / 10);
+
+        context.stroke();
+      }
+
+      // 首尾相连，逆时针
+      for (i = 0; i < 10; i++) {
+        context.beginPath();
+        context.arc(50 + i * 100, 300, 40, 0, 2 * Math.PI * (i + 1) / 10, true);
+        context.closePath();
+
+        context.stroke();
+      }
+
+      // 首尾不相连，逆时针
+      for (i = 0; i < 10; i++) {
+        context.beginPath();
+        context.arc(50 + i * 100, 420, 40, 0, 2 * Math.PI * (i + 1) / 10, true);
+
+        context.stroke();
+      }
+
+      // 首尾不相连，填充颜色
+      for (i = 0; i < 10; i++) {
+        context.beginPath();
+        context.arc(50 + i * 100, 540, 40, 0, 2 * Math.PI * (i + 1) / 10);
+
+        context.fill();
+      }
+
+      // 首尾相连，填充颜色
+      for (i = 0; i < 10; i++) {
+        context.beginPath();
+        context.arc(50 + i * 100, 660, 40, 0, 2 * Math.PI * (i + 1) / 10);
+        context.closePath();
+
+        context.fill();
+      }
+    };
+  </script>
+</body>
+</html>
