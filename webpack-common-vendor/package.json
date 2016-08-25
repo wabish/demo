@@ -1,0 +1,13 @@
+{
+  "name": "webpack-common-vendor",
+  "version": "1.0.0",
+  "keywords": [
+    "webpack",
+    "demo"
+  ],
+  "author": "cobish",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^1.13.2"
+  }
+}
