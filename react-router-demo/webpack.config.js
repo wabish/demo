@@ -12,7 +12,9 @@ module.exports = {
     },
     output: {
         path: './dist',
-        filename: '[name].js'
+        filename: '[name].js',
+        chuckFilename: 'chuck.js',
+        publicPath: './dist/'
     },
     resolve: {
         extensions: ['', '.js', '.jsx'],
@@ -27,4 +29,7 @@ module.exports = {
             loader: 'babel-loader!jsx-loader?harmony'
         }]
     },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js')
+    ]
 };

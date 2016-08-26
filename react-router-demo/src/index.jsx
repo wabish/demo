@@ -24,61 +24,37 @@ var App = React.createClass({
   }
 });
 
-// 电影列表
-var Movies = React.createClass({
-  render: function() {
-    return (
-      <ul>
-        <li><Link to="/movie/1">捉妖记</Link></li>
-        <li><Link to="/movie/2">寻龙诀</Link></li>
-        <li><Link to="/movie/3">微微一笑很倾城</Link></li>
-      </ul>
-    );
-  }
-});
+var Movies = function(location, callback) {
+  require.ensure([], function(require) {
+    callback(null, require('./movies.jsx'));
+  }, 'movies');
+};
 
-// 电影
-var Movie = React.createClass({
-  render: function() {
-    return (
-      <article>
-        <h1>电影的 id 为：{this.props.params.id}</h1>
-      </article>
-    );
-  }
-});
+var Movie = function(location, callback) {
+  require.ensure([], function(require) {
+    callback(null, require('./movie.jsx'));
+  }, 'movie');
+};
 
-// 图书列表
-var Books = React.createClass({
-  render: function() {
-    return (
-      <ul>
-        <li><Link to="/book/1">《活着》</Link></li>
-        <li><Link to="/book/2">《盗墓笔记》</Link></li>
-        <li><Link to="/book/3">《挪威的森林》</Link></li>
-      </ul>
-    );
-  }
-});
+var Books = function(location, callback) {
+  require.ensure([], function(require) {
+    callback(null, require('./books.jsx'));
+  }, 'books');
+};
 
-// 图书
-var Book = React.createClass({
-  render: function() {
-    return (
-      <article>
-        <h1>图书的 id 为：{this.props.params.id}</h1>
-      </article>
-    );
-  }
-});
+var Book = function(location, callback) {
+  require.ensure([], function(require) {
+    callback(null, require('./book.jsx'));
+  }, 'book');
+};
 
 ReactDOM.render((
     <Router history={hashHistory}>
       <Route path="/" component={App}>
-        <Route path="movies" component={Movies} />
-        <Route path="/movie/:id" component={Movie} />
-        <Route path="books" component={Books} />
-        <Route path="/book/:id" component={Book} />
+        <Route path="movies" getComponent={Movies} />
+        <Route path="/movie/:id" getComponent={Movie} />
+        <Route path="books" getComponent={Books} />
+        <Route path="/book/:id" getComponent={Book} />
       </Route>
     </Router>
   ),
