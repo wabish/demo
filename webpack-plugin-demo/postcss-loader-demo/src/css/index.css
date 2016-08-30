@@ -1,0 +1,41 @@
+.box {
+  width: 100%;
+  margin-top: 50px;
+  padding: 30px;
+  margin-left: -20px;
+  font-size: 0;
+  text-align: center;
+  border: 1px solid #000;
+}
+
+.box a {
+  display: inline-block;
+  margin-left: 40px;
+  width: 40px;
+  height: 40px;
+  text-indent: -99em;
+}
+
+.box .qq-login {
+  background: url("../img/sprite/qq.png");
+}
+
+.box .qq-login:hover {
+  background: url("../img/sprite/qq_hover.png");
+}
+
+.box .weibo-login {
+  background: url("../img/sprite/weibo.png");
+}
+
+.box .weibo-login:hover {
+  background: url("../img/sprite/weibo_hover.png");
+}
+
+.box .baidu-login {
+  background: url("../img/sprite/baidu.png");
+}
+
+.box .baidu-login:hover {
+  background: url("../img/sprite/baidu_hover.png");
+}
