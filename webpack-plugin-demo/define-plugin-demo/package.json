@@ -1,0 +1,11 @@
+{
+  "name": "define-plugin-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "NODE_ENV=dev webpack --config webpack.config.js",
+    "prod": "NODE_ENV=prod webpack --config webpack.config.js"
+  },
+  "devDependencies": {
+    "webpack": "^1.13.2"
+  }
+}
