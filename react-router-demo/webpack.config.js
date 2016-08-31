@@ -13,7 +13,7 @@ module.exports = {
     output: {
         path: './dist',
         filename: '[name].js',
-        chuckFilename: 'chuck.js',
+        chunkFilename: '[name].[chunkhash:8].chunk.js',
         publicPath: './dist/'
     },
     resolve: {
