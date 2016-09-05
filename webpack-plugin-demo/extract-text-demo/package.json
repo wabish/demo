@@ -1,6 +1,9 @@
 {
   "name": "extract-text-demo",
   "version": "1.0.0",
+  "scripts": {
+    "start": "webpack --watch --config webpack.config.js"
+  },
   "dependencies": {
     "react": "^15.3.1",
     "react-dom": "^15.3.1",

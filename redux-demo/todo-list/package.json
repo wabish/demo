@@ -1,6 +1,9 @@
 {
   "name": "todo-list",
   "version": "1.0.0",
+  "scripts": {
+    "start": "webpack --watch --config webpack.config.js"
+  },
   "dependencies": {
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
