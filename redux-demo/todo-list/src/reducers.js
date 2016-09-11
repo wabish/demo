@@ -6,6 +6,7 @@ const { SHOW_ALL } = VisibilityFilters;
  * 子 reducer
  */
 function visibilityFilter(state = SHOW_ALL, action) {
+  console.log('visibilityFilter reducer');
   switch (action.type) {
     case SET_VISIBILITY_FILTER:
       return action.filter;
@@ -15,6 +16,7 @@ function visibilityFilter(state = SHOW_ALL, action) {
 }
 
 function todos(state = [], action) {
+  console.log('todos reducer');
   switch (action.type) {
     case ADD_TODO:
       return [
