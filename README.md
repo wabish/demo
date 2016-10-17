@@ -16,6 +16,7 @@
     ├─ webapack-common-demo      # webpack commonchunk
     ├─ webpack-demo              # webpack例子
     ├─ webpack-plugin-demo       # webpack插件例子
+    ├─ yarn-demo                 # yarn例子
     ├─ zepto-demo                # zepto例子
     └─ zepto-webpack-demo        # zepto+webpack例子
 ```
