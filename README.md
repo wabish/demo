@@ -4,6 +4,7 @@
 └─ demo/
     ├─ canvas-demo               # canvas例子
     ├─ es6-demo                  # es6例子
+    ├─ flexbox-demo              # flexbox例子
     ├─ framework-demo            # 框架例子
     ├─ js-demo                   # js例子
     ├─ mocha-demo                # mocha单元测试例子
