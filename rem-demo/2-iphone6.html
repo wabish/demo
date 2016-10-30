@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>375px的iphone6设计图</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+
+  <script type="text/javascript">
+    document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth / 375 + 'px';
+  </script>
+
+  <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 原因是字体最小是12px，而不是1px */
+    div {
+      /* 375px / 1，结果却是4500px */
+      width: 375rem;
+
+      /* 100px / 1，结果却是1200px */
+      height: 100rem;
+
+      /* 20px / 1，结果却是20px */
+      font-size: 20rem;
+
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    hello rem
+  </div>
+</body>
+</html>
