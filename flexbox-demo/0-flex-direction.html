@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>flex-direction</title>
+  <style type="text/css">
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h3 {
+    text-align: center;
+  }
+
+  .box {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+    margin: 10px auto;
+
+    /* use flex */
+    display: flex;  
+  }
+
+  .box div {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+  }
+
+  .box-row {
+    flex-direction: row;
+  }
+
+  .box-row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  .box-column {
+    flex-direction: column;
+  }
+
+  .box-column-reverse {
+    flex-direction: column-reverse;
+  }
+  </style>
+</head>
+<body>
+  <h1>flex-direction</h1>
+
+  <h3>row</h3>
+  <div class="box box-row">
+    <div style="background:lightgreen;">1</div>
+    <div style="background:coral;">2</div>
+    <div style="background:lightblue;">3</div>
+  </div>
+
+  <h3>row-reverse</h3>
+  <div class="box box-row-reverse">
+    <div style="background:lightgreen;">1</div>
+    <div style="background:coral;">2</div>
+    <div style="background:lightblue;">3</div>
+  </div>
+
+  <h3>column</h3>
+  <div class="box box-column">
+    <div style="background:lightgreen;">1</div>
+    <div style="background:coral;">2</div>
+    <div style="background:lightblue;">3</div>
+  </div>
+
+  <h3>column-reverse</h3>
+  <div class="box box-column-reverse">
+    <div style="background:lightgreen;">1</div>
+    <div style="background:coral;">2</div>
+    <div style="background:lightblue;">3</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>mock</title>
+</head>
+<body>
+
+  <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="mock.js"></script>
+  <script type="text/javascript">
+    var url = 'https://api.github.com/repos/cobish/cobish.github.io/issues';
+    var data = {
+      filter: 'created',
+      per_page: 10000
+    };
+
+    Mock.mock(url, [{
+        body: '2014 年是一个转站点，前半个学期我还是以一个学生的身',
+        created_at: '2015-08-19T08:54:33Z',
+        labels: [{
+          name: '随笔'
+        }],
+        number: 1,
+        title: '博客进化史'
+      }, {
+        body: 'balabalala',
+        created_at: '2015-08-22T08:54:33Z',
+        labels: [{
+          name: '随笔'
+        }],
+        number: 1,
+        title: '博客'
+      }]);
+
+    $.ajax({
+      url: url,
+      data: data,
+      dataType: 'json',
+      success: function(json) {
+        console.log(json);
+        console.log(typeof json);
+      },
+      error: function() {
+        console.log('error');
+      }
+    });
+  </script>
+</body>
+</html>

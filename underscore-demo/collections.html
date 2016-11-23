@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Collections</title>
+</head>
+<body>
+  <script type="text/javascript" src="underscore.js"></script>
+  <script type="text/javascript">
+    // each
+    _.each([1, 2, 3], function(value) {
+      // console.log(value);
+    });
+
+    _.each({one: 3, two: 2, three: 1}, function(value, key) {
+      // console.log('key = ' + key + ', value = ' + value);
+    });
+
+    var eachObj = {
+      name: 'value'
+    };
+    
+    _.each([1, 2, 3], function(value) {
+      // console.log(this.name + '->' + value);
+    }, eachObj);
+
+    // map
+    var mapArr = _.map([1, 2, 3], function(num) {
+      return num * 3;
+    });
+    // console.log(mapArr);  // [3, 6, 9]
+
+    var mapObj = _.map({one: 1, two: 2, three: 3}, function(num, key) {
+      return num * 3;
+    });
+    // console.log(mapObj); // [3, 6, 9]
+
+    var mapArr2 = _.map([[1, 2], [3, 4]], _.first);
+    // console.log(mapArr2); // [1, 3]
+
+  </script>
+</body>
+</html>
