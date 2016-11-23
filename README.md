@@ -14,6 +14,7 @@
     ├─ react-vs-jquery-demo      # react和jquery的比较
     ├─ react-webpack-demo        # react+webpack例子
     ├─ redux-demo                # redux的比较
+    ├─ underscore-demo           # underscore例子
     ├─ webapack-common-demo      # webpack commonchunk
     ├─ webpack-demo              # webpack例子
     ├─ webpack-plugin-demo       # webpack插件例子
