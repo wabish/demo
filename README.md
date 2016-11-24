@@ -15,6 +15,7 @@
     ├─ react-webpack-demo        # react+webpack例子
     ├─ redux-demo                # redux的比较
     ├─ underscore-demo           # underscore例子
+    ├─ vue-demo                  # vue.js例子
     ├─ rem-demo                  # rem例子
     ├─ webapack-common-demo      # webpack commonchunk
     ├─ webpack-demo              # webpack例子

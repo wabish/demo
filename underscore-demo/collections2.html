@@ -6,18 +6,35 @@
 <body>
   <script type="text/javascript" src="underscore-collection.js"></script>
   <script type="text/javascript">
-    var obj = {
-      name: 'cobish'
-    };
+    // ======================== each
+    (function() {
+      var obj = {
+        name: 'cobish'
+      };
 
-    // _.each(['a', 'b', 'c'], function(value) {
-    //   console.log(this.name + ' -> ' + value);
-    // }, obj);
+      _.each({one: 1, two: 2, three: 3}, function(value, key) {
+        // console.log(this.name + '->' + ' value=' + value + ', key=' + key);
+      }, obj);
+    })();
+    
+    // ======================== map
+    (function() {
+      var obj = {
+        name: 'cobish'
+      };
 
-    _.each({one: 1, two: 2, three: 3}, function(value, key) {
-      // console.log(key);
-      console.log(this.name + '->' + ' value=' + value + ', key=' + key);
-    }, obj);
+      var result = _.map([1, 2, 3], function(value) {
+        return obj.name + '->' + value * 2;
+      }, obj);
+      // console.log(result);
+
+      var result2 = _.map({one: 1, two: 2, three: 3}, function(value, key) {
+        return key + ' -> ' + value;
+      });
+      console.log(result2);
+    })();
+
+    
   </script>
 </body>
 </html>
