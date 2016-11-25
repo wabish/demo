@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arrays</title>
+</head>
+<body>
+  <script type="text/javascript" src="underscore.js"></script>
+  <script type="text/javascript">
+    // ======================== first & initial & last & rest
+    (function() {
+      var arr = [5, 4, 3, 2, 1];
+
+      var result = _.first(arr);
+      // console.log(result);
+
+      var result2 = _.initial(arr);
+      // console.log(result2);
+
+      var result3 = _.last(arr);
+      // console.log(result3);
+
+      var result4 = _.rest(arr);
+      // console.log(result4);
+    })();
+
+    // ======================== compact
+    (function() {
+      var result = _.compact([0, 1, false, 2, '', 3]);
+      // console.log(result);
+    })();
+
+    // ======================== flatten
+    (function() {
+      var result = _.flatten([1, [2 ,3], [[4]]], true);
+      // console.log(result);
+    })();
+
+    // ======================== without
+    (function() {
+      var result = _.without([1, 2, 1, 0, 3, 1, 4], 0, 1);
+      // console.log(result);
+    })();
+
+    // ======================== union
+    (function() {
+      var result = _.union([1, 2, 3], [101, 2, 1, 10], [2, 1]);
+      // console.log(result);
+    })();
+
+    // ======================== intersection
+    (function() {
+      var result = _.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1]);
+      // console.log(result);
+    })();
+
+    // ======================== difference
+    (function() {
+      var result = _.difference([1, 2, 3, 4, 5], [5, 2, 10]);
+      // console.log(result);
+    })();
+
+    // ======================== uniq
+    (function() {
+      var result = _.uniq([1, 2, 1, 3, 1, 4]);
+      console.log(result);
+    })();
+
+    // ======================== zip
+    (function() {
+      
+    });
+
+  </script>
+</body>
+</html>
