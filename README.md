@@ -6,6 +6,7 @@
     ├─ es6-demo                  # es6例子
     ├─ flexbox-demo              # flexbox例子
     ├─ framework-demo            # 框架例子
+    ├─ gulp-es6-demo             # gulp+es6例子
     ├─ js-demo                   # js例子
     ├─ mocha-demo                # mocha单元测试例子
     ├─ mockjs-demo               # mock.js例子
