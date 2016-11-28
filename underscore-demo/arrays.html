@@ -78,8 +78,70 @@
     (function() {
       var result = _.object(['moe', 'larry', 'curly'], [30, 40, 50]);
       // console.log(result);
+
+      var result2 = _.object([['moe', 30], ['larry', 40], ['curly', 50]]);
+      // console.log(result2);
     })();
 
+    // ======================== indexOf & lastIndexOf & sortedIndex & findIndex & findLastIndex
+    (function() {
+      var result = _.indexOf([1, 2, 3], 2);
+      // console.log(result);
+
+      var result2 = _.lastIndexOf([1, 2, 3, 1, 2, 3], 2);
+      // console.log(result2);
+
+      var result3 = _.sortedIndex([10, 20, 30, 40, 50], 35);
+      // console.log(result3);
+
+      var stooges = [{name: 'moe', age: 40}, {name: 'curly', age: 60}];
+      var result4 = _.sortedIndex(stooges, {name: 'larry', age: 50}, 'age');
+      // console.log(result4);
+
+      function isPrime(n) {
+        if (n<1) return false;  //小于1则返回false
+
+        //循环判断n是否能被i整除，能整除则返回false
+        for(var i = 2; i < n; i++) {
+          if(n%i == 0) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      var result5 = _.findIndex([4, 6, 8, 12], isPrime);
+      // console.log(result5);
+
+      var result6 = _.findIndex([4, 6, 7, 12], isPrime);
+      // console.log(result6);
+
+      var users = [{id: 1, name: 'Bob', last: 'Brown'},
+                   {id: 2, name: 'Ted', last: 'White'},
+                   {id: 3, name: 'Frank', last: 'James'},
+                   {id: 4, name: 'Ted', last: 'Jones'}];
+      var result7 = _.findLastIndex(users, {name: 'Ted'});
+      // console.log(result7);
+    })();
+
+    // ======================== range
+    (function() {
+      var result = _.range(10);
+      // console.log(result);
+
+      var result2 = _.range(1, 11);
+      // console.log(result2);
+
+      var result3 = _.range(0, 30, 5);
+      // console.log(result3);
+
+      var result4 = _.range(0, -10, -1);
+      // console.log(result4);
+
+      var result5 = _.range(0);
+      // console.log(result5);
+    })();
   </script>
 </body>
 </html>
