@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>柱状图</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #canvas {
+      display: block;
+      margin: 100px auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="702" height="402"></canvas>
+
+  <script type="text/javascript">
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    // 画线
+    function drawLine(startX, startY, endX, endY) {
+      context.beginPath();
+      context.strokeStyle = '#ccc';
+      context.moveTo(startX + 1.5 , startY + 1.5 );
+      context.lineTo(endX + 1.5 , endY + 1.5 );
+      context.stroke();
+    }
+
+    // 画矩形
+    function drawRect(x, y, width, height) {
+      context.beginPath();
+      context.fillStyle = '#abcdef';
+      context.rect(x + 1.5, y + 1.5, width + 1.5, height + 1.5);
+      context.fill();
+      context.closePath();
+    }
+
+    var width = 700;
+    var height = 400;
+
+    // 横线
+    var horizontalLine = 5;
+
+    // 竖线
+    var verticalLine = 5;
+
+    // 画竖线
+    for (var z = 0; z < verticalLine; z++) {
+      var x = width / (verticalLine - 1) * z;
+      drawLine(x, 0, x, height);
+    }
+
+    // 画横线
+    for (var i = 0; i < horizontalLine; i++) {
+      var y = height / (horizontalLine - 1) * i;
+      drawLine(0, y, width, y);
+    }
+
+    // 画柱状
+    var array = [20, 30, 50, 40];
+    for (var j = 0; j < array.length; j++) {
+      var rectWidth = width / array.length;
+      var rectHeight = height * (array[j] / 80);
+      var x = rectWidth * j + rectWidth / 4;
+      var y = height - rectHeight;
+      drawRect(x, y, rectWidth / 2, rectHeight);
+    }
+
+  </script>
+</body>
+</html>

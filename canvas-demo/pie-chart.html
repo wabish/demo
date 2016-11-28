@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>圆饼图</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #canvas {
+      display: block;
+      margin: 100px auto;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="702" height="402"></canvas>
+
+  <script type="text/javascript">
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    var width = 700;
+    var height = 400;
+
+    // 角度转弧度
+    function toRadian(angle) {
+      return angle / 180 * Math.PI;
+    }
+
+    // 起始角度
+    var startAngle = -90,
+        endAngle = 0;
+
+    // 圆心横纵坐标
+    var circleX = width / 2,
+        circleY = height / 2;
+
+    // 半径
+    var radius = 120;
+
+    // 画扇形
+    var data = [{
+      value: 0.4,
+      color: 'orange'
+    }, {
+      value: 0.3,
+      color: 'pink'
+    }, {
+      value: 0.3,
+      color: 'green'
+    }];
+
+    data.forEach(function(value, index) {
+      context.beginPath();
+      context.strokeStyle = value.color;
+      endAngle = value.value * 360;
+      context.fillStyle = value.color;
+      context.moveTo(circleX, circleY);
+      context.arc(circleX, circleY, radius, toRadian(startAngle), toRadian(startAngle + endAngle));
+      context.fill();
+      startAngle += endAngle;
+    });
+
+    context.stroke();
+    
+
+    
+  </script>
+</body>
+</html>
