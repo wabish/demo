@@ -9,27 +9,20 @@
       padding: 0;
     }
 
-    #canvas {
+    canvas {
       display: block;
-      margin: 100px auto;
+      margin: 50px auto;
       border: 1px solid #ccc;
     }
   </style>
 </head>
 <body>
   <canvas id="canvas" width="702" height="402"></canvas>
+  <canvas id="canvas2" width="702" height="402"></canvas>
 
   <script type="text/javascript">
-    var canvas = document.getElementById('canvas');
-    var context = canvas.getContext('2d');
-
     var width = 700;
     var height = 400;
-
-    // 角度转弧度
-    function toRadian(angle) {
-      return angle / 180 * Math.PI;
-    }
 
     // 起始角度
     var startAngle = -90,
@@ -45,30 +38,60 @@
     // 画扇形
     var data = [{
       value: 0.4,
-      color: 'orange'
+      color: '#ff6384'
     }, {
       value: 0.3,
-      color: 'pink'
+      color: '#36a2eb'
     }, {
       value: 0.3,
-      color: 'green'
+      color: '#ffce56'
     }];
 
-    data.forEach(function(value, index) {
-      context.beginPath();
-      context.strokeStyle = value.color;
-      endAngle = value.value * 360;
-      context.fillStyle = value.color;
-      context.moveTo(circleX, circleY);
-      context.arc(circleX, circleY, radius, toRadian(startAngle), toRadian(startAngle + endAngle));
-      context.fill();
-      startAngle += endAngle;
-    });
+    // 角度转弧度
+    function toRadian(angle) {
+      return angle / 180 * Math.PI;
+    }
 
-    context.stroke();
-    
+    // 实心圆
+    (function() {
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
 
+      data.forEach(function(value, index) {
+        context.beginPath();
+        context.strokeStyle = value.color;
+        endAngle = value.value * 360;
+        context.fillStyle = value.color;
+        context.moveTo(circleX, circleY);
+        context.arc(circleX, circleY, radius, toRadian(startAngle), toRadian(startAngle + endAngle));
+        context.fill();
+        startAngle += endAngle;
+      });
+
+      context.stroke();
+    })();
     
+    // 空心圆
+    (function() {
+      var canvas = document.getElementById('canvas2');
+      var context = canvas.getContext('2d');
+
+      startAngle = -90;
+      radius = 100;
+
+      data.forEach(function(value, index) {
+        context.beginPath();
+        context.lineWidth = 40;
+        context.strokeStyle = value.color;
+        endAngle = value.value * 360;
+        context.arc(circleX, circleY, radius, toRadian(startAngle), toRadian(startAngle + endAngle));
+        startAngle += endAngle;
+
+        context.stroke();
+      });
+
+      
+    })();
   </script>
 </body>
 </html>
