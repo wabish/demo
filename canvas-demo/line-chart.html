@@ -9,14 +9,19 @@
       padding: 0;
     }
 
+    body {
+      background: #ccc;
+    }
+
     #canvas {
       display: block;
       margin: 100px auto;
+      background: #fff;
     }
   </style>
 </head>
 <body>
-  <canvas id="canvas" width="702" height="402"></canvas>
+  <canvas id="canvas" width="800" height="500"></canvas>
 
   <script type="text/javascript">
     var canvas = document.getElementById('canvas');
@@ -25,47 +30,101 @@
     var width = 700;
     var height = 400;
 
-    context.beginPath();
-    // context.translate(0.5,0.5);
-    context.lineWidth = 1;
-    context.strokeStyle = '#ccc';
+    var array = [20, 30, 50, 40, 60];
+    var length = array.length;
+
+    var maxNum = Math.max.apply(null, array);
 
     // 横线
     var horizontalLine = 5;
 
     // 竖线
-    var verticalLine = 5;
+    var verticalLine = length;
+
+    var perNum = getPerNum(maxNum, horizontalLine);
+
+    context.beginPath();
+    context.translate(0.5, 0.5);
+    context.lineWidth = 1;
+    context.strokeStyle = '#ccc';
 
     // 画横线
     for (var i = 0; i < horizontalLine; i++) {
-      var y = height / (horizontalLine - 1) * i;
-      context.moveTo(1, y + 1.5);
-      context.lineTo(width + 1, y + 1.5);
+      var y = height / (horizontalLine - 1) * i + 20;
+      context.beginPath();
+      context.moveTo(50, y);
+      context.lineTo(width + 50, y);
+      context.stroke();
+
+      // 文字
+      context.beginPath();
+      context.fillStyle = '#000';
+      context.font = '14px Arial';
+      context.textBaseline='middle';
+      context.textAlign='center';
+      context.fillText((horizontalLine - i - 1) * perNum, 50 - 20, y);
+      context.stroke();
     }
 
     // 画竖线
     for (var j = 0; j < verticalLine; j++) {
       var x = width / (verticalLine - 1) * j;
-      context.moveTo(x + 1.5, 1);
-      context.lineTo(x + 1.5, height + 1);
+      context.beginPath();
+      context.moveTo(x + 50, 20);
+      context.lineTo(x + 50, height + 20);
+      context.stroke();
+
+      // 文字
+      context.beginPath();
+      context.fillStyle = '#000';
+      context.font = '14px Arial';
+      // context.textAlign='bottom';
+      context.textBaseline='top';
+      context.fillText((j + 1) + '月', x + 50, height + 20 + 10);
+      context.stroke();
     }
 
-    context.stroke();
+    maxNum = (horizontalLine - 1) * perNum;
 
     // 画折线
-    var array = [20, 30, 50, 40, 10];
+    for (var z = 0; z < length; z++) {
+      var perX = z * width / (verticalLine - 1) + 50;
+      var perY = height * (1 - array[z] / maxNum) + 20;
 
-    context.beginPath();
-    context.lineWidth = 2;
-    context.strokeStyle = '#ff6384';
+      var zX = (z + 1) * width / (verticalLine - 1) + 50;
+      var zY = height * (1 - array[z + 1] / maxNum) + 20;
 
-    context.moveTo(0, height * (1 - array[0] / 80));
-    for (var z = 1; z < array.length; z++) {
-      context.lineTo(z * width / (verticalLine - 1) + 1, height * (1 - array[z] / 80) + 1);
+      context.beginPath();
+      context.lineWidth = 2;
+      context.strokeStyle = '#ff6384';
+      context.moveTo(perX, perY);
+      context.lineTo(zX, zY);
+      context.stroke();
+
+      // 画圈圈
+      context.beginPath();
+      context.strokeStyle = '#ff6384';
+      context.fillStyle = '#fff';
+      context.lineWidth = 2;
+      context.arc(z * width / (verticalLine - 1) + 50, height * (1 - array[z] / maxNum) + 20, 5, 0, 2 * Math.PI);
+      context.fill();
+      context.stroke();
     }
 
-    context.stroke();
+    function getPerNum(maxNum, lineNum) {
+      var perNum, len;
+      
+      perNum = maxNum / (horizontalLine - 1);
+      perNum = Math.ceil(perNum);
 
+      len = perNum.toString().length;
+
+      perNum = perNum / Math.pow(10, len - 1);
+      perNum = Math.ceil(perNum);
+      perNum = perNum * Math.pow(10, len - 1);
+
+      return perNum;
+    }
   </script>
 </body>
 </html>
