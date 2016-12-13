@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>vue-resource</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    var url = 'https://api.github.com/repos/cobish/cobish.github.io/issues';
+
+    url += '?fliter=created&per_page=10000';
+
+    Vue.http.get(url).then(function(response) {
+      // 响应成功回调
+      console.log('-- success --');
+      console.log(response);
+    }, function(response) {
+      // 响应错误回调
+      console.log('-- error --');
+      console.log(response);
+    });
+  </script>
+</body>
+</html>
