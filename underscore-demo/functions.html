@@ -4,6 +4,30 @@
   <title>functions</title>
 </head>
 <body>
+  <script type="text/javascript" src="underscore.js"></script>
+  <script type="text/javascript">
+    // ========== bind
+    (function() {
+      var func = function(greeting) {
+        return greeting + ': ' + this.name;
+      };
 
+      func = _.bind(func, {name: 'moe'}, 'h1');
+      // console.log(func());
+    })();
+
+    // ========== partial
+    (function() {
+      var subtract = function(a, b) {
+        return b - a;
+      };
+
+      var sub5 = _.partial(subtract, 5);
+      // console.log(sub5(20));
+
+      var subFrom20 = _.partial(subtract, _, 20);
+      console.log(subFrom20(5));
+    })();
+  </script>
 </body>
 </html>
