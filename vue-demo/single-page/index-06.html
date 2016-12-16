@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>命名路由</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="goHref">跳转</button>
+    <router-view></router-view>
+  </div>
+
+  <script type="text/javascript">
+    var User = {
+      template: '<div>User {{ $route.params.id }}</div>'
+    };
+
+    var router = new VueRouter({
+      routes: [{
+        path: '/user/:id',
+        name: 'user',
+        component: User
+      }]
+    });
+
+    var app = new Vue({
+      router: router,
+      methods: {
+        goHref: function(event) {
+          router.push({ name: 'user', params: { id: 2345 }});
+        }
+      }
+    }).$mount('#app');
+  </script>
+</body>
+</html>

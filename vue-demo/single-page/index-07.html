@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>命名试图</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Named Views</h1>
+    <ul>
+      <li><router-link to="/">/</router-link></li>
+      <li><router-link to="/other">/other</router-link></li>
+    </ul>
+    <router-view></router-view>
+    <router-view name="a"></router-view>
+    <router-view name="b"></router-view>
+  </div>
+
+  <script type="text/javascript">
+    var Foo = { template: '<div>foo</div>' };
+    var Bar = { template: '<div>bar</div>' };
+    var Baz = { template: '<div>baz</div>' };
+
+    var router = new VueRouter({
+      routes: [{
+        path: '/',
+        components: {
+          default: Foo,
+          a: Bar,
+          b: Baz
+        }
+      }, {
+        path: '/other',
+        components: {
+          default: Baz,
+          a: Bar,
+          b: Foo
+        }
+      }]
+    });
+
+    var app = new Vue({
+      router: router
+    }).$mount('#app');
+  </script>
+</body>
+</html>
