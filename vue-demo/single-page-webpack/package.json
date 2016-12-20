@@ -1,0 +1,14 @@
+{
+  "name": "single-page-webpack",
+  "version": "1.0.0",
+  "devDependencies": {
+    "css-loader": "^0.26.1",
+    "vue-loader": "^10.0.2",
+    "vue-template-compiler": "^2.1.4",
+    "webpack": "^1.14.0"
+  },
+  "dependencies": {
+    "vue": "^2.1.4",
+    "vue-router": "^2.1.1"
+  }
+}

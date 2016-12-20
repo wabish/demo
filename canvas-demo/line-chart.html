@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>折线图</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #ccc;
+    }
+
+    #canvas {
+      display: block;
+      margin: 100px auto;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="800" height="500"></canvas>
+
+  <script type="text/javascript">
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    var paddingTop = 0,
+        paddingLeft = 0;
+
+    // 画布宽高
+    var canvasWidth = canvas.width,
+        canvasHeight = canvas.height;
+
+    // 图表宽高
+    var width = 0,
+        height = 0;
+
+    // 数据
+    var array = [20, 30, 50, 40, 60];
+    var length = array.length;
+
+    var maxNum = Math.max.apply(null, array);
+
+    // 横线
+    var horizontalLine = 5;
+
+    // 竖线
+    var verticalLine = length;
+
+    // 横竖边距
+    var leftRightPadding = 20,
+        topBottomPadding = 20;
+
+    var perNum = getPerNum(maxNum, horizontalLine);
+
+    context.font = '14px Arial';
+    var font = 14;
+
+    var maxNumCeil = (horizontalLine - 1) * perNum;
+    context.fillText(maxNumCeil, 0, 0);
+    var verticalTextWidth = context.measureText(maxNumCeil).width,
+        verticalTextPadding = 10;
+
+    var lastText = '5月';
+    context.fillText(lastText, 0, 0);
+    var lastTextWidth = context.measureText(lastText).width;
+
+    // 清空画布
+    clear();
+
+    width = canvasWidth - verticalTextWidth - verticalTextPadding - lastTextWidth / 2 - leftRightPadding * 2;
+    height = canvasHeight - font - font / 2 - verticalTextPadding - topBottomPadding * 2;
+
+    context.beginPath();
+    context.translate(0.5, 0.5);
+    context.lineWidth = 1;
+    context.strokeStyle = '#ccc';
+
+    var chartLeft = verticalTextWidth + verticalTextPadding + leftRightPadding,
+        chartTop = (font / 2) + topBottomPadding;
+
+    maxNum = (horizontalLine - 1) * perNum;
+
+    // 画折线
+    var circles = [];
+
+    for (var index = 0; index < length; index++) {
+      var mycircle = {
+        x: 0,
+        y: 0,
+        blurColor: '#fff',
+        hoverColor: '#ff6384',
+        isHovering: false
+      };
+
+      circles.push(mycircle);
+    }
+
+    function drawLineChart( circle ) {
+      clear();
+      context.strokeStyle = '#ccc';
+      context.lineWidth = 1;
+
+      // 画横线
+      for (var i = 0; i < horizontalLine; i++) {
+        var y = height / (horizontalLine - 1) * i + chartTop;
+        context.beginPath();
+        context.moveTo(chartLeft, y);
+        context.lineTo(width + chartLeft, y);
+        context.stroke();
+
+        // 文字
+        context.beginPath();
+        context.fillStyle = '#000';
+        context.textBaseline='middle';
+        context.strokeStyle = '#ccc';
+        context.textAlign='right';
+        context.fillText((horizontalLine - i - 1) * perNum, verticalTextWidth + leftRightPadding, y);
+        context.stroke();
+      }
+
+      // 画竖线
+      for (var j = 0; j < verticalLine; j++) {
+        var x = width / (verticalLine - 1) * j;
+        context.beginPath();
+        context.moveTo(x + chartLeft, chartTop);
+        context.lineTo(x + chartLeft, height + chartTop);
+        context.stroke();
+
+        // 文字
+        context.beginPath();
+        context.fillStyle = '#000';
+        context.textBaseline='middle';
+        context.strokeStyle = '#ccc';
+        context.textAlign='center';
+        context.fillText((j + 1) + '月', x + chartLeft, height + chartTop + font / 2 + verticalTextPadding);
+        context.stroke();
+      }
+
+      for (var z = 0; z < length; z++) {
+        var perX = z * width / (verticalLine - 1) + chartLeft;
+        var perY = height * (1 - array[z] / maxNum) + chartTop;
+
+        var zX = (z + 1) * width / (verticalLine - 1) + chartLeft;
+        var zY = height * (1 - array[z + 1] / maxNum) + chartTop;
+
+        context.beginPath();
+        context.lineWidth = 2;
+        context.strokeStyle = '#ff6384';
+        context.moveTo(perX, perY);
+        context.lineTo(zX, zY);
+        context.stroke();
+
+        // 画圈圈
+        var myCircle = circles[z];
+        myCircle.x = perX;
+        myCircle.y = perY;
+        drawCircle(myCircle);
+      }
+    }
+    
+    // 画圈圈
+    function drawCircle(circle) {
+      context.beginPath();
+      context.strokeStyle = '#ff6384';
+      context.fillStyle = circle.isHovering ? circle.hoverColor : circle.blurColor;
+      context.lineWidth = 2;
+      context.arc(circle.x, circle.y, 5, 0, 2 * Math.PI);
+      context.fill();
+      context.stroke();
+    }
+
+    // 画矩形
+    function drawTooltip(tooltip) {
+      context.beginPath();
+      context.fillStyle = '#000';
+      context.fillRect(tooltip.x, tooltip.y, tooltip.width, tooltip.height);
+      context.stroke();
+    }
+
+    // 获取纵轴间隔数
+    function getPerNum(maxNum, lineNum) {
+      var perNum, len;
+      
+      perNum = maxNum / (horizontalLine - 1);
+      perNum = Math.ceil(perNum);
+
+      len = perNum.toString().length;
+
+      perNum = perNum / Math.pow(10, len - 1);
+      perNum = Math.ceil(perNum);
+      perNum = perNum * Math.pow(10, len - 1);
+
+      return perNum;
+    }
+
+    //清除canvas
+    function clear() {
+      context.clearRect(0, 0, canvasWidth, canvasHeight);
+    }
+
+    // 鼠标移动事件
+    var offsetX = canvas.offsetLeft,
+        offsetY = canvas.offsetTop;
+
+    var mouseX, mouseY;
+
+    function handleMouseMove(point) {
+      mouseX = parseInt(point.x - offsetX);
+      mouseY = parseInt(point.y - offsetY);
+
+      circles.forEach(function(circle) {
+        var myCircle = circle;
+        var dx = mouseX - myCircle.x,
+            dy = mouseY - myCircle.y;
+
+        // 半径暂时写死为 5
+        if (dx * dx + dy * dy < 6 * 6) {
+          if (!myCircle.isHovering) {
+            console.info(11);
+            myCircle.isHovering = true;
+            var tooltip = {
+              x: myCircle.x - 50,
+              y: myCircle.y + 50,
+              width: 100,
+              height: 100
+            };
+
+            drawLineChart(myCircle);
+            drawTooltip(tooltip);
+          }
+        } else {
+          if (myCircle.isHovering) {
+            myCircle.isHovering = false;
+            drawLineChart(myCircle);
+          }
+        }
+      });
+    }
+
+    function getMousePos(event) {
+      var e = event || window.event;
+      var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+      var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+      var x = e.pageX || e.clientX + scrollX;
+      var y = e.pageY || e.clientY + scrollY;
+      //alert('x: ' + x + '\ny: ' + y);
+      return { 'x': x, 'y': y };
+    }
+
+    canvas.onmousemove = function(e) {
+      var point = getMousePos(e);
+      handleMouseMove(point);
+    };
+
+    drawLineChart({
+      isHovering: false
+    });
+  </script>
+</body>
+</html>

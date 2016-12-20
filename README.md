@@ -6,6 +6,7 @@
     ├─ es6-demo                  # es6例子
     ├─ flexbox-demo              # flexbox例子
     ├─ framework-demo            # 框架例子
+    ├─ gulp-es6-demo             # gulp+es6例子
     ├─ js-demo                   # js例子
     ├─ mocha-demo                # mocha单元测试例子
     ├─ mockjs-demo               # mock.js例子
@@ -16,6 +17,7 @@
     ├─ react-webpack-demo        # react+webpack例子
     ├─ redux-demo                # redux的比较
     ├─ underscore-demo           # underscore例子
+    ├─ vue-demo                  # vue.js例子
     ├─ rem-demo                  # rem例子
     ├─ webapack-common-demo      # webpack commonchunk
     ├─ webpack-demo              # webpack例子
