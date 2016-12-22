@@ -3,6 +3,7 @@
 ``` bash
 └─ demo/
     ├─ canvas-demo               # canvas例子
+    ├─ datepicker-demo           # 日历选择器
     ├─ es6-demo                  # es6例子
     ├─ flexbox-demo              # flexbox例子
     ├─ framework-demo            # 框架例子

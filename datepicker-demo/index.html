@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>日历选择器</title>
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+
+    <div id="container" class="container">
+      <input id="dateTxt" class="txt" type="text" />
+    </div>
+    <p>上面是一个输入框</p>
+
+
+    <script type="text/javascript" src="js/lib/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $('#dateTxt').on('click', function() {
+          var date = $(this).attr('data-date');
+
+          if (date === $(this).val()) {
+            addTable();
+            return false;
+          }
+
+          addTable();
+          showDatepicker(date);
+
+          return false;
+        });
+      });
+
+      function addTable() {
+        var html = `
+          <table id="dateBox" border="1">
+            <thead>
+              <tr>
+                <th id="dateLeft" class="date-left">‹</th>
+                <th id="dateTitle" colspan="5">2016 年 08 月</th>
+                <th id="dateRight" class="date-right">›</th>
+              </tr>
+              <tr>
+                <th>日</th>
+                <th>一</th>
+                <th>二</th>
+                <th>三</th>
+                <th>四</th>
+                <th>五</th>
+                <th>六</th>
+              </tr>
+            </thead>
+            <tbody id="dateTable"></tbody>
+          </table>
+        `;
+
+        if ($('#container').find('#dateBox').length === 0) {
+          $('#container').append(html);
+          $('#dateBox').off().on('click', function() {
+            return false;
+          });
+
+          $(document).on('click', function() {
+            $('#dateBox').hide();
+          });
+        } else {
+          $('#dateBox').show();
+        }
+      }
+
+      function showDatepicker(dateStr) {
+        var date;
+        if (dateStr) {
+          date = new Date(dateStr);
+        } else {
+          date = new Date();
+        }
+
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        renderDate(year, month, day);
+
+        $('#dateTitle').html(year + ' 年 ' + pad(month, 2) + ' 月');
+
+        $('#dateLeft').off().on('click', function() {
+          var date = subOneMonth(year, month);
+          year = date.year;
+          month = date.month;
+          renderDate(year, month);
+          $('#dateTitle').html(year + ' 年 ' + pad(month, 2) + ' 月');
+        });
+
+        $('#dateRight').off().on('click', function() {
+          var date = addOneMonth(year, month);
+          year = date.year;
+          month = date.month;
+          renderDate(year, month);
+          $('#dateTitle').html(year + ' 年 ' + pad(month, 2) + ' 月');
+        });
+
+        $('#dateTable').off().on('click', function(e) {
+          if (e.target.nodeName !== 'TD') {
+            return false;
+          }
+
+          var date = $(e.target).html();
+          if (!date) {
+            return false;
+          }
+
+          var str = year + '-' + pad(month, 2) + '-' + pad(date, 2);
+          $('#dateTxt').val(str).attr('data-date', str);
+          $(this).find('td').removeClass('active');
+          $(e.target).addClass('active');
+          return false;
+        });
+      }
+
+      function addOneMonth(year, month) {
+        if (month === 12) {
+          month = 1;
+          year += 1;
+        } else {
+          month += 1;
+        }
+
+        return {
+          year: year,
+          month: month
+        };
+      }
+
+      function subOneMonth(year, month) {
+        if (month === 1) {
+          month = 12;
+          year -= 1;
+        } else {
+          month -= 1;
+        }
+
+        return {
+          year: year,
+          month: month
+        }
+      }
+
+      // 渲染日历
+      function renderDate(year, month, day) {
+        var num = getDaysNum(year, month);
+        var week = getDayOfWeek(year, month);
+
+        var i, j;
+        var index = 0;
+
+        var html;
+
+        for (i = 0; i < 6; i++) {
+          html += '<tr>';
+          for (j = 0; j < 7; j++) {
+            if ( i === 0 ) {
+              if ( j >= week ) {
+                index += 1;
+                html += '<td class="canHover" data-date="' + year + '-' + month + '-' + pad(index, 2) + '">';
+                html += index;
+              } else {
+                html += '<td>';
+              }
+            } else {
+              if (index < num) {
+                index += 1;
+                html += '<td class="canHover" data-date="' + year + '-' + month + '-' + pad(index, 2) + '">';
+                html += index;
+              } else {
+                html += '<td>';
+              }
+            }
+
+            html += '</td>';
+          }
+          html += '</tr>';
+        }
+
+        $('#dateTable').html(html);
+        var str = year + '-' + month + '-' + pad(day, 2);
+        $('#dateTable').find('td[data-date="' + str+ '"]').addClass('active');
+      }
+
+      /**
+       * 获取每月有多少天
+       */
+      function getDaysNum(year, month) {
+        month = parseInt(month, 10);
+        return new Date(year, month, 0).getDate();
+      }
+
+      /**
+       * 获取每月第一天是星期几，0代表星期日，1代表星期一，以此类推
+       */
+      function getDayOfWeek(year, month) {
+        month = parseInt(month, 10) - 1;
+        return new Date(year, month).getDay();
+      }
+
+      /* 质朴长存法  by lifesinger */
+      function pad(num, n) {
+        var len = parseInt(num, 10).toString().length;
+        while(len < n) {
+          num = '0' + num;
+          len++;
+        }
+        return num;
+      }
+    </script>
+  </body>
+</html>

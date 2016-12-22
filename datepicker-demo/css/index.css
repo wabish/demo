@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.txt {
+  display: block;
+  width: 337px;
+  height: 40px;
+  font-size: 20px;
+  margin: 0 auto;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+}
+
+p {
+  text-align: center;
+  padding: 15px 0;
+}
+
+.container {
+  position: relative;
+  width: 359px;
+  height: 40px;
+  margin: 100px auto 0 auto;
+}
+
+table {
+  position: absolute;
+  margin: 0 auto;
+  border: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  z-index; 100;
+  background: #fff;
+  cursor: default;
+}
+
+table tr,
+table th,
+table td {
+  /*border: 1px solid #000;*/
+  border: 0;
+  text-align: center;
+  font-weight: normal;
+}
+
+table th,
+table td {
+  width: 30px;
+  height: 30px;
+
+}
+
+table td.canHover:hover {
+  background: #eee;
+  cursor: pointer;
+}
+
+table td.active {
+  color: #39f;
+}
+
+.date-left,
+.date-right {
+  font-size: 18px;
+}
+
+.date-left:hover,
+.date-right:hover {
+  background: #eee;
+  cursor: pointer;
+}
