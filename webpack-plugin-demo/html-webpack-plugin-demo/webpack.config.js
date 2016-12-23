@@ -9,7 +9,11 @@ module.exports = {
     filename: '[name].js'
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['common', 'vendor'],
+      minChunks: 2
+    }),
+    // new HtmlWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'test.html',
       template: 'src/assets/test.html'
