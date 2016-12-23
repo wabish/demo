@@ -1,0 +1,8 @@
+{
+  "name": "html-webpack-plugin-demo",
+  "version": "1.0.0",
+  "devDependencies": {
+    "html-webpack-plugin": "^2.24.1",
+    "webpack": "^1.14.0"
+  }
+}
