@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>模板语法</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="message">
+    <span v-bind:id="message + 'wabish'">Message: {{ message }}</span> 
+    <button v-bind:disabled="isDisabled" v-on:click="doSomething">Button</button>
+    <button @click="doSomething">Button Two</button> 
+    <p v-if="seen">Now you can see me.</p>
+    <a v-bind:href="url | changeUrl">This is a link</a><br/>
+    <a :href="url">This is another link</a>
+  </div>
+  
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'cobish',
+        isDisabled: false,
+        seen: true,
+        url: 'https://github.com/cobish'
+      },
+      methods: {
+        doSomething: function() {
+          alert('hello world');
+        }
+      },
+      filters: {
+        changeUrl: function(value) {
+          if (value.indexOf('cobish') > -1) {
+            return 'https://cobish.github.io'
+          } else {
+            return value;
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
