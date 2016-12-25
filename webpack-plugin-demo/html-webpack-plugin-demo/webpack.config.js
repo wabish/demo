@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: './dist',
-    filename: '[name].js'
+    filename: '[name].[hash:8].js'
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
