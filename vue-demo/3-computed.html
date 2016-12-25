@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>计算属性</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p>{{ message.split('').reverse().join('') }}</p>
+    <p>Original messge: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    <p>Method message: "{{ reversedMessageFunc() }}"</p>
+  </div>
+  
+  <div id="example">
+    <input type="text" v-model="firstName" />
+    <input type="text" v-model="lastName" />
+    {{ fullName }}
+  </div>
+
+  <div id="example2">
+    <input type="text" v-model="firstName" />
+    <input type="text" v-model="lastName" />
+    {{ fullName }}
+  </div>
+
+  <script type="text/javascript">
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello'
+      },
+      computed: {
+        reversedMessage: function() {
+          return this.message.split('').reverse().join('');
+        }
+      },
+      methods: {
+        reversedMessageFunc: function() {
+          return this.message.split('').reverse().join('');
+        }
+      }
+    });
+
+    var vm2 = new Vue({
+      el: '#example',
+      data: {
+        firstName: 'Foo',
+        lastName: 'Bar',
+        fullName: 'Foo Bar'
+      },
+      watch: {
+        firstName: function(value) {
+          this.fullName = value + ' ' + this.lastName;
+        },
+        lastName: function(value) {
+          this.fullName = this.firstName + ' ' + value;
+        }
+      }
+    });
+
+    var vm3 = new Vue({
+      el: '#example2',
+      data: {
+        firstName: 'Mr',
+        lastName: 'cobish',
+        fullName: 'Mr cobish'
+      },
+      computed: {
+        fullName: function() {
+          return this.firstName + ' ' + this.lastName;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
