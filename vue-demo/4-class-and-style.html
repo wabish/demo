@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>计算属性</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="example1">
+    <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">example1</div>
+  </div>
+
+  <div id="example2">
+    <div v-bind:class="classObject">example2</div>
+  </div>
+
+  <div id="example3">
+    <div v-bind:class="classObject">example3</div>
+  </div>
+
+  <div id="example4">
+    <div v-bind:class="[activeClass, errClass]">example4</div>
+  </div>
+
+  <div id="example5">
+    <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px'}">example5</div>
+  </div>
+
+  <div id="example6">
+    <div v-bind:style="styleObject">example6</div>
+  </div>
+
+  <div id="example7">
+    <div v-bind:style="[baseStyles, otherStyles]">example7</div>
+  </div>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#example1',
+      data: {
+        isActive: true,
+        hasError: false
+      }
+    });
+
+    new Vue({
+      el: '#example2',
+      data: {
+        classObject: {
+          active: true,
+          'text-danger': false
+        }
+      }
+    });
+
+    new Vue({
+      el: '#example3',
+      data: {
+        isActive: true,
+        error: null
+      },
+      computed: {
+        classObject: function() {
+          return {
+            active: this.isActive && !this.error,
+            'text-danger': this.error && this.error.type === 'fatal'
+          };
+        }
+      }
+    });
+
+    new Vue({
+      el: '#example4',
+      data: {
+        activeClass: 'active',
+        errClass: 'text-danger'
+      }
+    });
+
+    new Vue({
+      el: '#example5',
+      data: {
+        activeColor: 'red',
+        fontSize: 30
+      }
+    });
+
+    new Vue({
+      el: '#example6',
+      data: {
+        styleObject: {
+          color: 'red',
+          fontSize: '13px'
+        }
+      }
+    });
+
+    new Vue({
+      el: '#example7',
+      data: {
+        baseStyles: {
+          color: 'blue',
+          fontSize: '15px'
+        },
+        otherStyles: {
+          padding: '10px',
+          transform: 'rotate(180deg)'
+        }
+      }
+    });
+  </script>
+</body>
+</html>
