@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>条件渲染</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="example1">
+    <h1 v-if="ok">Yes</h1>
+    <h1 v-else>No</h1>
+  </div>
+
+  <div id="example2">
+    <template v-if="ok">
+      <h1>Title</h1>
+      <p>Paragraph 1</p>
+      <p>Paragragh 2</p>
+    </template>
+  </div>
+
+  <div id="example3">
+    <div v-if="type === 'A'">
+      A
+    </div>
+    <div v-else-if="type === 'B'">
+      B
+    </div>
+    <div v-else-if="type === 'C'">
+      C
+    </div>
+    <div v-else>
+      Not A/B/C
+    </div>
+  </div>
+
+  <div id="example4">
+    <h1 v-show="ok">Hello!</h1>
+  </div>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#example1',
+      data: {
+        ok: false
+      }
+    });
+
+    new Vue({
+      el:'#example2',
+      data: {
+        ok: true
+      }
+    });
+
+    new Vue({
+      el: '#example3',
+      data: {
+        type: 'c'
+      }
+    });
+
+    new Vue({
+      el: '#example4',
+      data: {
+        ok: true
+      }
+    });
+  </script>
+</body>
+</html>
