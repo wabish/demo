@@ -1,0 +1,13 @@
+{
+  "name": "dev-server-and-html-plugin-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "cross-env webpack && webpack-dev-server --hot --inline --open"
+  },
+  "devDependencies": {
+    "cross-env": "^3.1.3",
+    "html-webpack-plugin": "^2.24.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.15.1"
+  }
+}
