@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>事件处理器</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="example-1">
+    <button v-on:click="counter += 1">增加 1</button>
+    <p>这个按钮被点击了 {{ counter }} 次。</p>
+  </div>
+
+  <div id="example-2">
+    <button v-on:click="greet">Greet</button>
+  </div>
+
+  <div id="example-3">
+    <button v-on:click="say('hi')">Say hi</button>
+    <button v-on:click="say('what')">Say what</button>
+  </div>
+
+  <div id="example-4">
+    <input v-on:keyup.enter="submit" type="text">
+  </div>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#example-1',
+      data: {
+        counter: 0
+      }
+    });
+
+    new Vue({
+      el: '#example-2',
+      data: {
+        name: 'Vue.js'
+      },
+      methods: {
+        greet: function(event) {
+          alert('Hello ' + this.name + '!');
+          alert(event.target.tagName);
+        }
+      }
+    });
+
+    new Vue({
+      el: '#example-3',
+      methods: {
+        say: function(message) {
+          alert(message);
+        }
+      }
+    });
+
+    new Vue({
+      el: '#example-4',
+      methods: {
+        submit: function() {
+          alert(11);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
