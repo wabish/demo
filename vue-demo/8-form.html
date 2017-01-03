@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>表单控件绑定</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="example-1">
+    <input v-model="message" placeholder="edit me" />
+    <p>Message is: {{ message }}</p>
+  </div>
+
+  <br>
+
+  <div id="example-2">
+    <span>Multiline massage is:</span>
+    <p style="white-space: pre">{{ message }}</p>
+    <br>
+    <textarea v-model="message" placeholder="add multiple lines"></textarea>
+  </div>
+
+  <br>
+
+  <div id="example-3">
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+  </div>
+
+  <br>
+
+  <div id="example-4">
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">Join</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+  </div>
+
+  <br>
+
+  <div id="example-5">
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#example-1',
+      data: {
+        message: ''
+      }
+    });
+
+    new Vue({
+      el: '#example-2',
+      data: {
+        message: ''
+      }
+    });
+
+    new Vue({
+      el: '#example-3',
+      data: {
+        checked: false
+      }
+    });
+
+    new Vue({
+      el: '#example-4',
+      data: {
+        checkedNames: []
+      }
+    });
+
+    new Vue({
+      el: '#example-5',
+      data: {
+        picked: ''
+      }
+    });
+  </script>
+</body>
+</html>
