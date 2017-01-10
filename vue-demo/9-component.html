@@ -16,6 +16,22 @@
     <my-component-2></my-component-2>
   </div>
 
+  <br>
+
+  <div id="example-3">
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+  </div>
+
+  <br>
+
+  <div id="example-4">
+    <simple-counter-2></simple-counter-2>
+    <simple-counter-2></simple-counter-2>
+    <simple-counter-2></simple-counter-2>
+  </div>
+
   <script>
     // 注册
     Vue.component('my-component', {
@@ -34,6 +50,38 @@
         }
       }
     });
+
+    var data = {
+      counter: 0
+    };
+
+    Vue.component('simple-counter', {
+      template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+      data: function() {
+        return data;
+      }
+    });
+
+    new Vue({
+      el: '#example-3'
+    });
+
+    Vue.component('simple-counter-2', {
+      template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+      data: function() {
+        return {
+          counter: 0
+        };
+      }
+    });
+
+    new Vue({
+      el: '#example-4'
+    });
   </script>
 </body>
 </html>
+
+
+
+
