@@ -1,0 +1,19 @@
+{
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "plugins": [
+    "html"
+  ],
+  "rules": {
+    "no-console": "off",
+    "indent": [
+      "error",
+      2
+    ],
+  }
+}
