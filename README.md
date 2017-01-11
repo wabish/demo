@@ -5,6 +5,7 @@
     ├─ canvas-demo               # canvas例子
     ├─ datepicker-demo           # 日历选择器
     ├─ es6-demo                  # es6例子
+    ├─ eslint-demo               # eslint例子
     ├─ flexbox-demo              # flexbox例子
     ├─ framework-demo            # 框架例子
     ├─ gulp-es6-demo             # gulp+es6例子
