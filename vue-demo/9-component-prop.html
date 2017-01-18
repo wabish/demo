@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件 prop</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="example-1">
+    <child message="hello!"></child>
+  </div>
+  
+  <br>
+
+  <div id="example-2">
+    <child-2 my-message="hello!"></child-2>
+  </div>
+
+  <br>
+
+  <div id="example-3">
+    <input v-model="parentMsg">
+    <br>
+    <child-2 v-bind:my-message="parentMsg"></child-2>
+  </div>
+
+  <br>
+
+  <div id="example-4">
+    <input v-model="parentMsg">
+    <br>
+    <child-3 v-bind:my-message="parentMsg"></child-3>
+  </div>
+
+  <script>
+    Vue.component('child', {
+      template: '<span>{{ message }}</span>',
+      props: ['message']
+    });
+
+    new Vue({
+      el: '#example-1'
+    });
+
+    Vue.component('child-2', {
+      template: '<span>{{ myMessage }}</span>',
+      props: ['myMessage']
+    });
+
+    new Vue({
+      el: '#example-2'
+    });
+
+    new Vue({
+      el: '#example-3',
+      data: {
+        parentMsg: 'hello cobish'
+      }
+    });
+
+    Vue.component('child-3', {
+      template: '<span>{{ myMessage }}</span>',
+      props: {
+        myMessage: {
+          type: String,
+          required: true
+        }
+      }
+    });
+
+    new Vue({
+      el: '#example-4',
+      data: {
+        parentMsg: 'hello cobish'
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+

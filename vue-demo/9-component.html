@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="example-1">
+    <my-component></my-component>
+  </div>
+
+  <br>
+
+  <div id="example-2">
+    <my-component-2></my-component-2>
+  </div>
+
+  <br>
+
+  <div id="example-3">
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+  </div>
+
+  <br>
+
+  <div id="example-4">
+    <simple-counter-2></simple-counter-2>
+    <simple-counter-2></simple-counter-2>
+    <simple-counter-2></simple-counter-2>
+  </div>
+
+  <script>
+    // 注册
+    Vue.component('my-component', {
+      template: '<div>A custom component!</div>'
+    });
+
+    new Vue({
+      el: '#example-1'
+    });
+
+    new Vue({
+      el: '#example-2',
+      components: {
+        'my-component-2': {
+          template: '<div>A custom component-2!</div>'
+        }
+      }
+    });
+
+    var data = {
+      counter: 0
+    };
+
+    Vue.component('simple-counter', {
+      template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+      data: function() {
+        return data;
+      }
+    });
+
+    new Vue({
+      el: '#example-3'
+    });
+
+    Vue.component('simple-counter-2', {
+      template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+      data: function() {
+        return {
+          counter: 0
+        };
+      }
+    });
+
+    new Vue({
+      el: '#example-4'
+    });
+  </script>
+</body>
+</html>
+
+
+
+

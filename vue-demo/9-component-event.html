@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件 event</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="example-1">
+    <p>{{ total }}</p>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+  </div>
+
+  <script>
+    Vue.component('button-counter', {
+      template: '<button v-on:click="increment">{{ counter }}</button>',
+      data: function() {
+        return {
+          counter: 0
+        };
+      },
+      methods: {
+        increment: function() {
+          this.counter += 1;
+          this.$emit('increment');
+        }
+      }
+    });
+
+    new Vue({
+      el: '#example-1',
+      data: {
+        total: 0
+      },
+      methods: {
+        incrementTotal: function() {
+          this.total += 1;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+

@@ -2,14 +2,18 @@
 <html>
 <head>
   <title>vue start</title>
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-  <div id="app">
+  <div id="app" v-cloak>
     {{ message }}
   </div>
 
-  <div id="app-2">
+  <!-- <div id="app-2">
     <span v-bind:title="message">
       Hover your mouse over me for a few seconds to see my dynamically bound title!
     </span>
@@ -41,8 +45,9 @@
     <ol>
       <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
     </ol>
-  </div>
+  </div> -->
   
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script type="text/javascript">
     var app = new Vue({
       el: '#app',
@@ -51,65 +56,65 @@
       }
     });
 
-    var app2 = new Vue({
-      el: '#app-2',
-      data: {
-        message: 'You loaded this page on ' + new Date()
-      }
-    });
+    // var app2 = new Vue({
+    //   el: '#app-2',
+    //   data: {
+    //     message: 'You loaded this page on ' + new Date()
+    //   }
+    // });
 
-    var app3 = new Vue({
-      el: '#app-3',
-      data: {
-        seen: true
-      }
-    });
+    // var app3 = new Vue({
+    //   el: '#app-3',
+    //   data: {
+    //     seen: true
+    //   }
+    // });
 
-    var app4 = new Vue({
-      el: '#app-4',
-      data: {
-        todos: [
-          { text: 'Learn javascript' },
-          { text: 'Learn Vue' },
-          { text: 'Build something awesome' }
-        ]
-      }
-    });
+    // var app4 = new Vue({
+    //   el: '#app-4',
+    //   data: {
+    //     todos: [
+    //       { text: 'Learn javascript' },
+    //       { text: 'Learn Vue' },
+    //       { text: 'Build something awesome' }
+    //     ]
+    //   }
+    // });
 
-    var app5 = new Vue({
-      el: '#app-5',
-      data: {
-        message: 'Hello Vue.js'
-      },
-      methods: {
-        reverseMessage: function() {
-          this.message = this.message.split('').reverse().join('');
-        }
-      }
-    });
+    // var app5 = new Vue({
+    //   el: '#app-5',
+    //   data: {
+    //     message: 'Hello Vue.js'
+    //   },
+    //   methods: {
+    //     reverseMessage: function() {
+    //       this.message = this.message.split('').reverse().join('');
+    //     }
+    //   }
+    // });
 
-    var app6 = new Vue({
-      el: '#app-6',
-      data: {
-        message: 'Hello Vue!'
-      }
-    });
+    // var app6 = new Vue({
+    //   el: '#app-6',
+    //   data: {
+    //     message: 'Hello Vue!'
+    //   }
+    // });
 
-    Vue.component('todo-item', {
-      props: ['todo'],
-      template: '<li>{{ todo.text }}</li>'
-    });
+    // Vue.component('todo-item', {
+    //   props: ['todo'],
+    //   template: '<li>{{ todo.text }}</li>'
+    // });
 
-    var app7 = new Vue({
-      el: '#app-7',
-      data: {
-        groceryList: [
-          { text: 'Vegetables' },
-          { text: 'Cheese' },
-          { text: 'Whatever else humans are supposed to eat' }
-        ]
-      }
-    });
+    // var app7 = new Vue({
+    //   el: '#app-7',
+    //   data: {
+    //     groceryList: [
+    //       { text: 'Vegetables' },
+    //       { text: 'Cheese' },
+    //       { text: 'Whatever else humans are supposed to eat' }
+    //     ]
+    //   }
+    // });
   </script>
 </body>
 </html>
