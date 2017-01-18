@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>列表渲染</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+  <ul id="example-1">
+    <li v-for="item in items">
+      {{ item.message }}
+    </li>
+  </ul>
+
+  <ul id="example-2">
+    <li v-for="(item, index) in items">
+      {{ parentMessage }} - {{ index }} - {{ item.message }}
+    </li>
+  </ul>
+
+  <ul id="example-3">
+    <template v-for="item in items">
+      <li>{{ item.msg }}</li>
+      <li>cobish</li>
+    </template>
+  </ul>
+
+  <ul id="example-4">
+    <li v-for="value in object">
+      {{ value }}
+    </li>
+
+    <li v-for="(value, key) in object">
+      {{ key }} : {{ value }}
+    </li>
+
+    <li v-for="(value, key, index) in object">
+      {{ index }}. {{ key }} : {{ value }}
+    </li>
+  </ul>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#example-1',
+      data: {
+        items: [{
+          message: 'Foo'
+        }, {
+          message: 'Bar'
+        }]
+      }
+    });
+
+    new Vue({
+      el: '#example-2',
+      data: {
+        parentMessage: 'Parent',
+        items: [{
+          message: 'Foo'
+        }, {
+          message: 'Bar'
+        }]
+      }
+    });
+
+    new Vue({
+      el: '#example-3',
+      data: {
+        items: [{
+          msg: 'Foo'
+        }, {
+          msg: 'Bar'
+        }]
+      }
+    });
+
+    new Vue({
+      el: '#example-4',
+      data: {
+        object: {
+          FirstName: 'John',
+          LastName: 'Doe',
+          Age: 30
+        }
+      }
+    });
+  </script>
+</body>
+</html>
