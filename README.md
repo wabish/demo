@@ -12,6 +12,7 @@
     ├─ js-demo                   # js例子
     ├─ mocha-demo                # mocha单元测试例子
     ├─ mockjs-demo               # mock.js例子
+    ├─ nodejs-demo               # node.js例子
     ├─ react-demo                # react例子
     ├─ react-examples            # react官方例子
     ├─ react-router-demo         # react-router例子
