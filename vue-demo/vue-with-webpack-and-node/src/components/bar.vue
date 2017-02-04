@@ -8,7 +8,7 @@ import axios from 'axios';
 export default {
   mounted() {
     // node
-    var url = 'http://localhost/test';
+    var url = 'http://localhost/api/test';
 
     // php
     // var url = 'http://localhost/test.php';

@@ -97,10 +97,11 @@ module.exports = {
     color: true,
     hot: true,
     inline: true,
+    progress: true,
     host: 'localhost',
     port: '80',
     proxy: {
-      '**': {
+      '/api/**': {
         target: 'http://localhost:8888',
         secure: false
       }

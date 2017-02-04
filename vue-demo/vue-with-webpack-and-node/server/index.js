@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({
   extended: false 
 }));
 
-app.post('/test', function(req, res) {
+app.post('/api/test', function(req, res) {
   var json = {
     name: 'cobish',
     age: 24
