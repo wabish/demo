@@ -36,7 +36,7 @@ var getPlugins = function() {
         multiStep: true
       }),
       new OpenBrowserPlugin({ 
-        url: 'http://localhost:8080' 
+        url: 'http://localhost' 
       })
     );
   }
@@ -95,7 +95,13 @@ module.exports = {
     hot: true,
     inline: true,
     host: 'localhost',
-    port: '8080',
+    port: '80',
+    proxy: {
+      '**': {
+        target: 'http://localhost:8888',
+        secure: false
+      }
+    }
   },
   plugins: getPlugins()
 };

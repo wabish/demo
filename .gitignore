@@ -4,5 +4,4 @@
 # Node modules
 node_modules
 *.log
-dist
 tmp

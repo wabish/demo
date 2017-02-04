@@ -7,6 +7,9 @@
     "build": "cross-env NODE_ENV=production webpack --colors --config webpack.config.js"
   },
   "dependencies": {
+    "axios": "^0.15.3",
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
     "vue": "^2.1.10",
     "vue-router": "^2.1.3"
   },
