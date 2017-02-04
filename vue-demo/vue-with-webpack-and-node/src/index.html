@@ -4,13 +4,15 @@
   <title></title>
 </head>
 <body>
-  <div id="app">
+  <div id="app" class="wrapper">
     <h1>Hello App!</h1>
-    <p>
+    <p class="sidebar">
       <router-link to="/foo">Go to Foo</router-link>
       <router-link to="/bar">Go to Bar</router-link>
     </p>
-    <router-view></router-view>
+    <div class="outline">
+      <router-view></router-view>
+    </div>
   </div>
 </body>
 </html>

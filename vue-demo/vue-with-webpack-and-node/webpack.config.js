@@ -34,9 +34,6 @@ var getPlugins = function() {
     plugins.push(
       new webpack.HotModuleReplacementPlugin({
         multiStep: true
-      }),
-      new OpenBrowserPlugin({ 
-        url: 'http://localhost' 
       })
     );
   }
@@ -77,6 +74,9 @@ module.exports = {
       test: /\.vue$/,
       loader: 'vue!eslint',
       exclude: /node_modules/
+    }, {
+      test: /\.scss$/,
+      loaders: ['style-loader', 'css-loader', 'sass-loader']
     }]
   },
   vue: {
@@ -91,7 +91,10 @@ module.exports = {
     }
   },
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: {
+      index: '/index.html'
+    },
+    color: true,
     hot: true,
     inline: true,
     host: 'localhost',

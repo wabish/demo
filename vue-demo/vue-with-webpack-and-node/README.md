@@ -23,7 +23,7 @@
 2. 根目录下运行 ``npm run debug``（生产模式为 ``npm run build``） 开始调试开发（生产运行）；
 3. 由于 PHP 未使用路由等，所以 ajax 请求的 url 需修改一下，注释掉请求 node 的接口，打开请求 php 的接口。
 
-## 开发
+## 技术栈
 
 1. 运行 webpack-dev-server，热替换；
 2. 使用 vue、es6；
