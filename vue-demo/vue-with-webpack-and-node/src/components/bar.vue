@@ -11,7 +11,7 @@ export default {
     var url = 'http://localhost/api/test';
 
     // php
-    // var url = 'http://localhost/test.php';
+    var url = 'http://localhost/test.php';
 
     axios.post(url)
       .then((response) => {
