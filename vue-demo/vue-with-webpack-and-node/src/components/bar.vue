@@ -29,7 +29,7 @@ export default {
 
   data() {
     return {
-      greeting: '正在加载中...'
+      greeting: '首页就在这里'
     };
   }
 };

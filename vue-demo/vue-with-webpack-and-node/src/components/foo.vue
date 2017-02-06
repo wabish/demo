@@ -1,20 +1,31 @@
 <template>
   <div>
-    <p class="fooClass">{{ greeting }} Foo!</p>
-    <!-- <img class="fooImg" src="../img/demo.png" width="596" height="244" /> -->
+    <div>
+      <p>
+        <router-link to="/foo/service">我的服务</router-link>
+        <router-link to="/foo/info">我的资料</router-link>
+      </p>
+      <div>
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      greeting: 'Hello'
-    };
-  }
+  name: 'foo'
 };
 </script>
 
-<style lang="sass">
-@import "../style/foo";
+<style scoped>
+a {
+  margin: 0 5px;
+  color: #2973b7;
+}
+
+.router-link-active {
+  color: #fff;
+  background: #2973b7;
+}
 </style>

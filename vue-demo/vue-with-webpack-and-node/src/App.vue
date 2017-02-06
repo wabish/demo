@@ -1,6 +1,6 @@
 <template>
-  <div id="app" class="wrapper">
-    <h1>Hello App!</h1>
+  <div id="app">
+    <!-- <h1>Hello App!</h1> -->
     <router-view></router-view>
   </div>
 </template>

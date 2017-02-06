@@ -2,8 +2,8 @@
   <!-- <p>Hello {{ greeting }}</p> -->
   <div>
     <p>
-      <router-link to="/foo">Go to Foo</router-link>
-      <router-link to="/bar">Go to Bar</router-link>
+      <router-link to="/bar">首页</router-link>
+      <router-link class="special" to="/foo">我的工作台</router-link>
     </p>
     <div>
       <router-view></router-view>
@@ -13,12 +13,6 @@
 
 <script>
 export default {
-  // data() {
-  //   return {
-  //     greeting: 'everybody!'
-  //   };
-  // }
-
   name: 'index'
 };
 </script>
@@ -27,5 +21,10 @@ export default {
 a {
   margin: 0 5px;
   color: #42b983;
+}
+
+.router-link-active {
+  color: #fff;
+  background: #42b983;
 }
 </style>
