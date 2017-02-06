@@ -1,15 +1,12 @@
+var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+var PrerenderSpaPlugin = require('prerender-spa-plugin');
 
 // dev 模式
 var isDev = function() {
   return process.env.NODE_ENV.trim() === 'development';
-};
-
-// debug 模式
-var isDebug = function() {
-  return process.env.NODE_ENV.trim() === 'debug';
 };
 
 // 上线模式
@@ -35,6 +32,13 @@ var getPlugins = function() {
       new webpack.HotModuleReplacementPlugin({
         multiStep: true
       })
+    );
+  } else {
+    plugins.push(
+      new PrerenderSpaPlugin(
+        path.join(__dirname, 'dist'),
+        ['/']
+      )
     );
   }
 
@@ -111,7 +115,7 @@ module.exports = {
       }
     }
   },
-  devtool: '#eval-source-map',
+  devtool: isProd() ? false : '#eval-source-map',
   plugins: getPlugins()
 };
 
