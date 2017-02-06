@@ -1,7 +1,6 @@
 <template>
   <div>
     <p class="barClass">{{ greeting }}</p>
-    <!-- <div class="barImg"></div> -->
   </div>
 </template>
 

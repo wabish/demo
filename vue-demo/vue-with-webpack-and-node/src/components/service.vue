@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>{{ greeting }}</p>
+    <img src="../img/demo.png" width="696" height="244" />
   </div>
 </template>
 

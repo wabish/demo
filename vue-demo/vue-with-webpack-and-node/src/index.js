@@ -8,9 +8,11 @@ if (!window.Promise) {
   window.Promise = Promise;
 }
 
-new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
+document.addEventListener('DOMContentLoaded', function() {
+  new Vue({
+    el: '#app',
+    router,
+    template: '<App/>',
+    components: { App }
+  });
 });

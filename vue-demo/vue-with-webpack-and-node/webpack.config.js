@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 var PrerenderSpaPlugin = require('prerender-spa-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // dev 模式
 var isDev = function() {
@@ -16,10 +17,11 @@ var isProd = function() {
 
 var getPlugins = function() {
   var plugins = [
+    new ExtractTextPlugin(isProd() ? '[name].[chunkhash:8].css' : '[name].css'),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: __dirname + '/src/index.html',
-      inject: true,
+      inject: 'head',
       chunkSortMode: 'dependency'
     }),
     new OpenBrowserPlugin({ 
@@ -44,6 +46,11 @@ var getPlugins = function() {
 
   if (isProd()) {
     plugins.push(
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: '"production"'
+        }
+      }),
       new webpack.optimize.UglifyJsPlugin({
         minimize: true,
         output: {
@@ -66,6 +73,7 @@ module.exports = {
   output: {
     path: './dist',
     filename: isProd() ? '[name].[chunkhash:8].js' : '[name].js',
+    chunkFilename: isProd() ? '[name].chunk.[chunkhash:8].js' : '[name].chunk.js',
     publicPath: '/'
   },
   module: {
@@ -77,21 +85,25 @@ module.exports = {
       test: /\.vue$/,
       loader: 'vue!eslint',
       exclude: /node_modules/
-    }, {
-      test: /\.scss$/,
-      loader: 'style!css?sourceMap!sass?sourceMap'
-    }, {
+    }, 
+    // {
+    //   test: /\.scss$/,
+    //   loader: 'style!css?sourceMap!sass?sourceMap'
+    // }, 
+    {
       test: /\.(png|jpg|gif|svg)$/,
       loader: 'url-loader',
       query: {
         limit: 8192,
-        name: isProd() ? '[name].[chunkhash:8].[ext]' : '[name].[ext]'
+        name: isProd() ? '[name].[hash:8].[ext]' : '[name].[ext]'
       }
     }]
   },
   vue: {
     loaders: {
-      scss: 'vue-style-loader!css-loader!sass-loader'
+      css: ExtractTextPlugin.extract('css'),
+      scss: ExtractTextPlugin.extract('vue-style-loader!css-loader!sass-loader')
+      // scss: 'vue-style-loader!css-loader!sass-loader'
     }
   },
   resolve: {

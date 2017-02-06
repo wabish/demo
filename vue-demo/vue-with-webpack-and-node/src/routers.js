@@ -1,13 +1,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Index from './components/index';
-import Foo from './components/foo';
-import Bar from './components/bar';
-import Service from './components/service';
-import Info from './components/info';
-import NoFound from './components/noFound';
 
 Vue.use(Router);
+
+const Index = r => require.ensure([], () => r(require('./components/index')), 'index');
+const Bar = r => require.ensure([], () => r(require('./components/bar')), 'bar');
+const Foo = r => require.ensure([], () => r(require('./components/foo')), 'foo');
+const Service = r => require.ensure([], () => r(require('./components/service')), 'service');
+const Info = r => require.ensure([], () => r(require('./components/info')), 'info');
+const NoFound = r => require.ensure([], () => r(require('./components/noFound')), 'noFound');
 
 export default new Router({
   mode: 'history',

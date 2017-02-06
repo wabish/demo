@@ -5,5 +5,9 @@ $redColor: blue;
 }
 
 .fooImg {
+  display: inline-block;
   margin-top: 20px;
+  width: 272px;
+  height: 170px;
+  background: url("../img/child.png");
 }

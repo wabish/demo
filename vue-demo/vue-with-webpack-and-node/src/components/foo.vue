@@ -1,13 +1,11 @@
 <template>
   <div>
+    <p>
+      <router-link to="/foo/service">我的服务</router-link>
+      <router-link to="/foo/info">我的资料</router-link>
+    </p>
     <div>
-      <p>
-        <router-link to="/foo/service">我的服务</router-link>
-        <router-link to="/foo/info">我的资料</router-link>
-      </p>
-      <div>
-        <router-view></router-view>
-      </div>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -18,7 +16,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 a {
   margin: 0 5px;
   color: #2973b7;
