@@ -1,5 +1,8 @@
 <template>
-  <p class="fooClass">{{ greeting }} Foo!</p>
+  <div>
+    <p class="fooClass">{{ greeting }} Foo!</p>
+    <img class="fooImg" src="../img/demo.png" width="596" height="244" />
+  </div>
 </template>
 
 <script>

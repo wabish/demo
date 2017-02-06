@@ -1,5 +1,8 @@
 <template>
-  <p class="barClass">{{ greeting }}</p>
+  <div>
+    <p class="barClass">{{ greeting }}</p>
+    <div class="barImg"></div>
+  </div>
 </template>
 
 <script>
@@ -11,7 +14,7 @@ export default {
     var url = 'http://localhost/api/test';
 
     // php
-    var url = 'http://localhost/test.php';
+    // var url = 'http://localhost/test.php';
 
     axios.post(url)
       .then((response) => {
@@ -33,5 +36,5 @@ export default {
 </script>
 
 <style lang="sass">
-@import "../style/bar";
+@import "../style/bar/bar";
 </style>

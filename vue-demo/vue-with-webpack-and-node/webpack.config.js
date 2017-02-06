@@ -56,7 +56,6 @@ var getPlugins = function() {
 }
 
 module.exports = {
-  devtool: '#eval-source-map',
   entry: {
     index: './src/index.js'
   },
@@ -76,12 +75,19 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.scss$/,
-      loaders: ['style-loader', 'css-loader', 'sass-loader']
+      loader: 'style!css?sourceMap!sass?sourceMap'
+    }, {
+      test: /\.(png|jpg|gif|svg)$/,
+      loader: 'url-loader',
+      query: {
+        limit: 8192,
+        name: isProd() ? '[name].[chunkhash:8].[ext]' : '[name].[ext]'
+      }
     }]
   },
   vue: {
     loaders: {
-      sass: 'vue-style-loader!css-loader!sass-loader',
+      scss: 'vue-style-loader!css-loader!sass-loader'
     }
   },
   resolve: {
@@ -91,13 +97,11 @@ module.exports = {
     }
   },
   devServer: {
-    historyApiFallback: {
-      index: '/index.html'
-    },
+    historyApiFallback: true,
     color: true,
     hot: true,
     inline: true,
-    progress: true,
+    noInfo: true,
     host: 'localhost',
     port: '80',
     proxy: {
@@ -107,6 +111,7 @@ module.exports = {
       }
     }
   },
+  devtool: '#eval-source-map',
   plugins: getPlugins()
 };
 
