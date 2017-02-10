@@ -1,9 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 var PrerenderSpaPlugin = require('prerender-spa-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var WebpackMd5Hash = require('webpack-md5-hash');
 
 // dev 模式
 var isDev = function() {
@@ -18,25 +20,30 @@ var isProd = function() {
 var getPlugins = function() {
   var plugins = [
     new ExtractTextPlugin(isProd() ? '[name].[chunkhash:8].css' : '[name].css'),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['common', 'vendor'],
+      minChunks: 3
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: __dirname + '/src/index.html',
       inject: 'head',
       chunkSortMode: 'dependency'
     }),
-    new OpenBrowserPlugin({ 
-      url: 'http://localhost' 
-    })
   ];
 
   if (isDev()) {
     plugins.push(
       new webpack.HotModuleReplacementPlugin({
         multiStep: true
+      }),
+      new OpenBrowserPlugin({ 
+        url: 'http://localhost:8080' 
       })
     );
   } else {
     plugins.push(
+      new CleanWebpackPlugin(['dist']),
       new PrerenderSpaPlugin(
         path.join(__dirname, 'dist'),
         ['/']
@@ -59,7 +66,8 @@ var getPlugins = function() {
         compress: {
           warnings: false
         }
-      })
+      }),
+      new WebpackMd5Hash()
     );
   }
 
@@ -68,7 +76,13 @@ var getPlugins = function() {
 
 module.exports = {
   entry: {
-    index: './src/index.js'
+    index: './src/index.js',
+    vendor: [
+      'vue',
+      'vue-router',
+      'axios',
+      'promise-polyfill'
+    ]
   },
   output: {
     path: './dist',
@@ -103,10 +117,12 @@ module.exports = {
     loaders: {
       css: ExtractTextPlugin.extract('css'),
       scss: ExtractTextPlugin.extract('vue-style-loader!css-loader!sass-loader')
-      // scss: 'vue-style-loader!css-loader!sass-loader'
     }
   },
   resolve: {
+    root: [
+      path.resolve('./node_modules')
+    ],
     extensions: ['', '.js', '.css', '.scss', '.vue'],
     alias: {
       'vue$': 'vue/dist/vue.common.js'
@@ -119,7 +135,7 @@ module.exports = {
     inline: true,
     noInfo: true,
     host: 'localhost',
-    port: '80',
+    port: '8080',
     proxy: {
       '/api/**': {
         target: 'http://localhost:8888',
