@@ -1,0 +1,168 @@
+$btn-prefix-cls: "co-button";
+
+// 默认按钮
+.#{$btn-prefix-cls} {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #bfcbd9;
+  color: #1f2d3d;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 4px;
+  user-select: none;
+  appearance: none;
+  transition: color .2s linear,background-color .2s linear,border .2s linear;
+
+  &:hover {
+    color: #20a0ff;
+    border-color: #20a0ff;
+  }
+
+  &:active {
+    color: #1d90e6;
+    border-color: #1d90e6;
+    outline: none;
+  }
+
+  &[disabled],
+  &[disabled]:hover {
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #d1dbe5;
+    color: #bfcbd9;
+  }
+}
+
+// 主要按钮
+.#{$btn-prefix-cls}-primary {
+  color: #fff;
+  background-color: #20a0ff;
+  border-color: #20a0ff;
+
+  &:hover {
+    color: #fff;
+    background: #4db3ff;
+    border-color: #4db3ff;
+  }
+
+  &:active {
+    color: #fff;
+    background: #1d90e6;
+    border-color: #1d90e6;
+  }
+
+  &[disabled],
+  &[disabled]:hover {
+    color: #bfcbd9;
+    cursor: not-allowed;
+    background-image: none;
+    background-color: #eef1f6;
+    border-color: #d1dbe5;
+  }
+}
+
+// 文字按钮
+.#{$btn-prefix-cls}-text {
+  border: none;
+  color: #20a0ff;
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+
+  &:hover {
+    color: #4db3ff;
+  }
+
+  &:active {
+    color: #1d90e6;
+  }
+
+  &[disabled],
+  &[disabled]:hover {
+    color: #bfcbd9;
+    cursor: not-allowed;
+  }
+}
+
+// 成功按钮
+.#{$btn-prefix-cls}-success {
+  color: #fff;
+  background-color: #13ce66;
+  border-color: #13ce66;
+
+  &:hover {
+    color: #fff;
+    background: #42d885;
+    border-color: #42d885;
+  }
+
+  &:active {
+    color: #fff;
+    background: #11b95c;
+    border-color: #11b95c;
+  }
+}
+
+// 警告按钮
+.#{$btn-prefix-cls}-warning {
+  color: #fff;
+  background-color: #f7ba2a;
+  border-color: #f7ba2a;
+
+  &:hover {
+    color: #fff;
+    background: #f9c855;
+    border-color: #f9c855;
+  }
+
+  &:active {
+    color: #fff;
+    background: #dea726;
+    border-color: #dea726;
+  }
+}
+
+// 危险按钮
+.#{$btn-prefix-cls}-danger {
+  color: #fff;
+  background-color: #ff4949;
+  border-color: #ff4949;
+
+  &:hover {
+    color: #fff;
+    background: #ff6d6d;
+    border-color: #ff6d6d;
+  }
+
+  &:active {
+    color: #fff;
+    background: #e64242;
+    border-color: #e64242;
+  }
+}
+
+// 信息按钮
+.#{$btn-prefix-cls}-info {
+  color: #fff;
+  background-color: #50bfff;
+  border-color: #50bfff;
+
+  &:hover {
+    color: #fff;
+    background: #73ccff;
+    border-color: #73ccff;
+  }
+
+  &:active {
+    color: #fff;
+    background: #48ace6;
+    border-color: #48ace6;
+  }
+}
