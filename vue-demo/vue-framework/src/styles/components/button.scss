@@ -166,3 +166,25 @@ $btn-prefix-cls: "co-button";
     border-color: #48ace6;
   }
 }
+
+// 加载中按钮
+.#{$btn-prefix-cls}-loading {
+  position: relative;
+  pointer-events: none;
+
+  &:before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: inherit;
+    background-color: hsla(0,0%,100%,.35);
+  }
+
+  .co-icon {
+    margin-right: 2px;
+  }
+}

@@ -1,6 +1,11 @@
 <template>
-  <button :type="nativeType" :class="classes" :disabled="disabled">
-    <slot></slot>
+  <button 
+    :type="nativeType" 
+    :class="classes" 
+    :disabled="disabled"
+    @click="handleClick">
+    <co-icon type="load-c" class="co-load-loop" v-if="loading"></co-icon>
+    <span><slot></slot></span>
   </button>
 </template>
 
@@ -11,7 +16,9 @@
   const prefixCls = 'co-button';
 
   export default {
-    components: { Icon },
+    components: { 
+      'co-icon': Icon
+    },
     name: prefixCls,
     props: {
       type: {
@@ -19,6 +26,7 @@
           return oneOf(value, ['primary', 'text', 'success', 'warning', 'danger', 'info']);
         }
       },
+      loading: Boolean,
       disabled: Boolean,
       nativeType: {
         default: 'button',
@@ -32,9 +40,15 @@
         return [
           `${prefixCls}`,
           {
-            [`${prefixCls}-${this.type}`]: !!this.type
+            [`${prefixCls}-${this.type}`]: !!this.type,
+            [`${prefixCls}-loading`]: !!this.loading
           } 
         ]
+      }
+    },
+    methods: {
+      handleClick(evt) {
+        this.$emit('click', evt);
       }
     }
   };
