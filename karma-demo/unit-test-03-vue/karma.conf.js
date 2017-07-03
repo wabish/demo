@@ -43,7 +43,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage-istanbul'],
+    reporters: ['spec', 'coverage-istanbul'],
 
     // coverage-istanbul 输出配置，报告文件输出于根目录下的 coverage 文件夹内
     coverageIstanbulReporter: {
