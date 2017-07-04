@@ -1,16 +1,26 @@
 <template>
   <div>
-    <h1>{{ msg }}</h1>
+    <h1 @click="handleClick">{{ msg }}</h1>
+    <p>{{ message }}</p>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'hello',
+    props: {
+      message: String
+    },
+
     data() {
       return {
         msg: 'Hello World'
       };
+    },
+
+    methods: {
+      handleClick() {
+        this.msg = 'cobish';
+      }
     }
   };
 </script>
