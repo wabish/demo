@@ -8,16 +8,17 @@ module.exports = {
     publicPath: '/dist/'
   },
   module: {
-    loaders: [{
-      test: /\.vue$/,
-      loader: 'vue'
-    }]
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      }
+    ]
   },
   resolve: {
     extensions: ['.js', '.css', '.scss','.vue'],
     alias: {
       'vue$': 'vue/dist/vue.common.js'
     }
-  },
-  devtool: 'eval-source-map'
+  }
 };

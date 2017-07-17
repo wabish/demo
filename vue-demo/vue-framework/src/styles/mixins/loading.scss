@@ -1,0 +1,16 @@
+// Loading for loop
+.co-load-loop{
+  animation: ani-load-loop 1s linear infinite;
+}
+
+@keyframes ani-load-loop {
+  0 {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "foreverjs-demo",
+  "scripts": {
+    "start": "forever start -w -o ./log/out.log --watchIgnore log -a index.js",
+    "stop": "forever stopall"
+  }
+}

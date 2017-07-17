@@ -1,0 +1,13 @@
+{
+  "name": "webpack-dev-server-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^2.17.0",
+    "open-browser-webpack-plugin": "0.0.2",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
+  }
+}
