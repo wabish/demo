@@ -8,7 +8,34 @@ export default class Aleter extends React.Component{
             isToggleOn: this.props.isOn? this.props.isOn: false
         };
     }
+    componentWillMount() {
+        alert("componentWillMount");
+    }
 
+    componentDidMount() {
+        alert("componentDidMount");
+    }
+
+    componentWillReceiveProps(nextProps) {
+        alert("componentWillReceiveProps");
+    }
+
+    shouldComponentUpdate() {
+        alert("shouldComponentUpdate");
+        return true;        // 记得要返回true
+    }
+
+    componentWillUpdate() {
+        alert("componentWillUpdate");
+    }
+
+    componentDidUpdate() {
+        alert("componentDidUpdate");
+    }
+
+    componentWillUnmount() {
+        alert("componentWillUnmount");
+    }
     handleClick() {
         // this.setState(prevState => ({
         //   isToggleOn: !prevState.isToggleOn

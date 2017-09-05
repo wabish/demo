@@ -2,6 +2,9 @@
 npm install   # yarn install
 ```
 
+# Coding
+![coding](./code.png)
+# 运行
 ```bash
 npm start # yarn start
 ```
